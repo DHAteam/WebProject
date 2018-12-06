@@ -1756,18 +1756,7 @@ Header Styles
 .boxlayout {
   padding: 30px; }
 .header__area .container-fluid {
-  padding: 0 80px; 
-  -moz-box-shadow: 2px 3px 5px rgba(0, 0, 0,0.5);
-  -webkit-box-shadow: 2px 3px 5px rgba(0, 0, 0, .5);
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, .5);
-  background-color: #ff4060;
-  background-image: url("images/bg/subtle-stripes.png");
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-
-}
-  
+  padding: 0 80px; }
 .header__area .menubar {
   display: inline-block; }
   .header__area .menubar a.open_sidebar {
@@ -1792,7 +1781,7 @@ Header Styles
       -webkit-transform: translateY(-50%);
       transform: translateY(-50%); }
 .header__area .logo {
-  height: 50px;
+  height: 90px;
   line-height: 90px; }
 .header__area .header__sidebar__right {
   height: 90px;
@@ -1804,17 +1793,17 @@ Header Styles
     align-self: stretch;
     display: flex; }
     .header__area .header__sidebar__right > li.shop_search > a {
-      background: rgba(0, 0, 0, 0) url("images/icons/search_white.png") no-repeat scroll 0 center;
+      background: rgba(0, 0, 0, 0) url("images/icons/search.png") no-repeat scroll 0 center;
       height: 100%;
       line-height: 35px;
       width: 24px; }
     .header__area .header__sidebar__right > li.shopcart > a {
-      background: rgba(0, 0, 0, 0) url("images/icons/cart_white.png") no-repeat scroll 0 center;
+      background: rgba(0, 0, 0, 0) url("images/icons/cart.png") no-repeat scroll 0 center;
       height: 100%;
       line-height: 35px;
       width: 24px; }
 	  .header__area .header__sidebar__right > li.wishlist > a {
-      background: rgba(0, 0, 0, 0) url("images/icons/button-wishlist_while.png") no-repeat scroll 0 center;
+      background: rgba(0, 0, 0, 0) url("images/icons/button-wishlist.png") no-repeat scroll 0 center;
       height: 100%;
       line-height: 35px;
       width: 24px; }
@@ -1857,7 +1846,7 @@ Header Styles
 	  position: relative;
 	}
       .header__area .header__sidebar__right > li.setting__bar__icon > a {
-        background: transparent url("images/icons/icon_setting_white.png") no-repeat scroll left center;
+        background: transparent url("images/icons/icon_setting.png") no-repeat scroll left center;
         cursor: pointer;
         font-size: 0;
         height: 35px;
@@ -1888,7 +1877,7 @@ Header Styles
     .mainmenu__nav .meninmenu li a {
 	  align-items: center;
 	  align-self: stretch;
-	  color: rgb(255, 255, 255);
+	  color: #333;
 	  display: flex;
 	  font-size: 14px;
 	  font-weight: 600;
@@ -1896,7 +1885,7 @@ Header Styles
 	  text-transform: uppercase;
 	  transition: all 0.4s ease 0s;
 	}
-		.mainmenu__nav .meninmenu li a:hover{color: #e5859d;}
+		.mainmenu__nav .meninmenu li a:hover{color: #e59285;}
 		.is-sticky .mainmenu__nav .meninmenu li a {
 		  color: #fff;
 		}
@@ -2141,21 +2130,19 @@ height: 62px;
 .sticky__header.is-sticky {
   -webkit-animation: 0.4s ease-in-out 0s normal both 1 running fadeInDown;
   animation: 0.4s ease-in-out 0s normal both 1 running fadeInDown;
-  background: #ff435ce0(0, 0, 0, 0.9) none repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0.9) none repeat scroll 0 0;
   box-shadow: 0 0 5px #bdbdbd;
   left: 0;
   position: fixed;
   top: 0;
   transition: box-shadow 0.5s ease-in-out 0s;
   width: 100%;
-  z-index: 99; 
-  border-radius: 20px;
-1}
+  z-index: 99; }
 .header__area.sticky__header.is-sticky .menubar a.open_sidebar,
 .header__area.sticky__header.is-sticky .header__sidebar__right,
 .header__area.sticky__header.is-sticky .mainmenu__nav,
 .header--two.sticky__header.is-sticky .mainmenu__nav .meninmenu {
-  height: 90px; }
+  height: 55px; }
 .header__area.sticky__header.is-sticky .logo {
   height: 40px;
   line-height: 55px;
@@ -6277,8 +6264,3 @@ section.wn_contact_area {
   padding-bottom: 60px;
 }
 }
-
-
-
-
-

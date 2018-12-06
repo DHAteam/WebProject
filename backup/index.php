@@ -30,7 +30,6 @@ $rs = load($top10LastPros);
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
  	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> 
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -51,7 +50,7 @@ $rs = load($top10LastPros);
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
 		<!-- Header -->
-		<header id="wn__header" class="header__area header__absolute sticky__header zig-zag-bottom">
+		<header id="wn__header" class="header__area header__absolute sticky__header">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
@@ -62,7 +61,7 @@ $rs = load($top10LastPros);
 
 							</a>
 			
-						
+						<i>	<a style="color: #ff56aa; font-size: 24px;"href="index.php<?php  ?>">NynnPet</a></i>
 						
 						</div>
 					</div>
@@ -432,8 +431,8 @@ $rs = load($top10LastPros);
         </div>
         <!-- End Slider area -->
 		<!-- Start BEst Seller Area -->
-		<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #ff4060;background-image: url('images/bg/lined-paper.png');">
-			<div class="container" style = "background:white; padding-top:20px;padding-left:50px; border:1px solid pink; border-radius: 20px;">
+		<section class="wn__product__area brown--color pt--80  pb--30">
+			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="section__title text-center">
