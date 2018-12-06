@@ -1,4 +1,19 @@
-<!doctype html>
+<?php 
+require_once 'config.php';
+$top10LastPros = "select * from sanpham order by ID desc limit 10";
+$rs = load($top10LastPros);
+?>
+
+
+
+
+
+
+
+
+
+
+<!Doctype html>
 <html class="no-js" lang="zxx">
 <head>
 	<meta charset="utf-8">
@@ -428,98 +443,33 @@
 				<!-- Start Single Tab Content -->
 				<div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50">
 					<!-- Start Single Product -->
+
+
+
+
+					<?php 
+					while($data = $rs->fetch_object()) {
+					?>
+
+
 					<div class="product product__style--3">
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="product__thumb">
-								<a class="first__img" href="single-product.php"><img src="images/books/1.jpg" alt="product image"></a>
-								<a class="second__img animation1" href="single-product.php"><img src="images/books/2.jpg" alt="product image"></a>
+								<a class="first__img" href="product_detail.php?id=<?php echo $data->ID; ?>"><img src="<?php echo $data->HinhAnh; ?>" alt="product image"></a>
 								<div class="hot__box">
 									<span class="hot-label">Hot</span>
 								</div>
 							</div>
 							<div class="product__content content--center">
-								<h4><a href="single-product.php">robin parrish</a></h4>
+								<h4><a href="product_detail.php?id=<?php echo $data->ID; ?>"><?php echo $data->TenSP; ?></a></h4>
 								<ul class="prize d-flex">
-									<li>$35.00</li>
-									<li class="old_prize">$35.00</li>
+									<li><?php echo $data->Gia; ?></li>
+									<li class="old_prize"><?php echo $data->Gia; ?></li>
 								</ul>
 								<div class="action">
 									<div class="actions_inner">
 										<ul class="add_to_links">
 											<li><a class="cart" href="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.php"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div><?php 
-require_once 'config.php';
-$top10LastPros = "select * from sanpham order by ID desc limit 10";
-$rs = load($top10LastPros);
-
-while($row = $rs->fetch_assoc()) {
-?>
-<div class="last_products" style = "width:828px; margin:auto; background:white;">
-  
-
-  <?php 
-  $sql  = "select * from sanpham order by NgayTao desc limit 10";
-  $rs= load($sql);
-  
-  while($row = $rs->fetch_assoc()) {
-  ?>
-      
-    <a href="product.php?id=<?php echo $row["ID"];?>" >   <div class="product_item">
-
-        <div class="title"><?php echo $row["TenSP"]; ?></div>
-       <div class="title"><?php echo $row["LoaiSP"]; ?></div></a>
-        <a href="product.php?id=<?php echo $row["ID"];?>" > <img  class="image"src="<?php echo $row["HinhAnh"] ?>"  border="0" alt="" /></a><div class="price"><?php echo $row['Gia'] ?>đ</div>
-
-          <div class="link">  <a href="#" > MUA HÀNG </a></div>
-
-
-
-    </div>
-  <?php } ?>
-</div>
-
-<?php } ?>
-
-					<!-- Start Single Product -->
-					<!-- Start Single Product -->
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="single-product.php"><img src="images/books/3.jpg" alt="product image"></a>
-								<a class="second__img animation1" href="single-product.php"><img src="images/books/4.jpg" alt="product image"></a>
-								<div class="hot__box color--2">
-									<span class="hot-label">HOT</span>
-								</div>
-							</div>
-							<div class="product__content content--center">
-								<h4><a href="single-product.php">The Remainng</a></h4>
-								<ul class="prize d-flex">
-									<li>$35.00</li>
-									<li class="old_prize">$35.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.php"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
 											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
 										</ul>
 									</div>
@@ -536,163 +486,20 @@ while($row = $rs->fetch_assoc()) {
 							</div>
 						</div>
 					</div>
-					<!-- Start Single Product -->
-					<!-- Start Single Product -->
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="single-product.php"><img src="images/books/5.jpg" alt="product image"></a>
-								<a class="second__img animation1" href="single-product.php"><img src="images/books/6.jpg" alt="product image"></a>
-								<div class="hot__box">
-									<span class="hot-label">Hot</span>
-								</div>
-							</div>
-							<div class="product__content content--center">
-								<h4><a href="single-product.php">Bowen Greenwood</a></h4>
-								<ul class="prize d-flex">
-									<li>$40.00</li>
-									<li class="old_prize">$35.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.php"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Start Single Product -->
-					<!-- Start Single Product -->
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="single-product.php"><img src="images/books/7.jpg" alt="product image"></a>
-								<a class="second__img animation1" href="single-product.php"><img src="images/books/8.jpg" alt="product image"></a>
-								<div class="hot__box">
-									<span class="hot-label">HOT</span>
-								</div>
-							</div>
-							<div class="product__content content--center">
-								<h4><a href="single-product.php">Lando</a></h4>
-								<ul class="prize d-flex">
-									<li>$35.00</li>
-									<li class="old_prize">$50.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.php"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Start Single Product -->
-					<!-- Start Single Product -->
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="single-product.php"><img src="images/books/9.jpg" alt="product image"></a>
-								<a class="second__img animation1" href="single-product.php"><img src="images/books/10.jpg" alt="product image"></a>
-								<div class="hot__box">
-									<span class="hot-label">HOT</span>
-								</div>
-							</div>
-							<div class="product__content content--center">
-								<h4><a href="single-product.php">Doctor Wldo</a></h4>
-								<ul class="prize d-flex">
-									<li>$35.00</li>
-									<li class="old_prize">$35.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.php"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Start Single Product -->
-					<!-- Start Single Product -->
-					<div class="product product__style--3">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="product__thumb">
-								<a class="first__img" href="single-product.php"><img src="images/books/11.jpg" alt="product image"></a>
-								<a class="second__img animation1" href="single-product.php"><img src="images/books/12.jpg" alt="product image"></a>
-								<div class="hot__box">
-									<span class="hot-label">Hot</span>
-								</div>
-							</div>
-							<div class="product__content content--center content--center">
-								<h4><a href="single-product.php">Ghost</a></h4>
-								<ul class="prize d-flex">
-									<li>$50.00</li>
-									<li class="old_prize">$35.00</li>
-								</ul>
-								<div class="action">
-									<div class="actions_inner">
-										<ul class="add_to_links">
-											<li><a class="cart" href="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
-											<li><a class="wishlist" href="wishlist.php"><i class="bi bi-shopping-cart-full"></i></a></li>
-											<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="product__hover--content">
-									<ul class="rating d-flex">
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li class="on"><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- Start Single Product -->
-					</div>
+					<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 				</div>
 				<!-- End Single Tab Content -->
 			</div>
