@@ -1,7 +1,7 @@
 <?php
 
 define("HOST", "localhost");
-define("DB", "petshopdb");
+define("DB", "petshop");
 define("UID", "root");
 define("PWD", "");
 
@@ -17,11 +17,6 @@ function load($sql) {
     //$cn->close();
 	return $rs;
 }
-
-
-
-
-
 
 
 function write($sql) {

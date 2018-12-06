@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="shortcut icon" h ref="images/favicon.ico">
 	<link rel="apple-touch-icon" href="images/icon.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
@@ -25,7 +25,7 @@
    <link rel="stylesheet" href="css/custom.css">
 
 	<!-- Modernizer js -->
-	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+	<script src="js/vendor/modernizr-3.5.0.m din.js"></script>
 </head>
 <body>
 	<!--[if lte IE 9]>
@@ -55,96 +55,105 @@
 							<ul class="meninmenu d-flex justify-content-start">
 							
 								<li class="drop with--one--item"><a href="index.php">Home</a></li>
-								<li class="drop"><a href="#">Loại</a>
+								<li class="drop"><a href="#">Shop</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
-											<li class="title">Loai1</li>
-											<li><a href="shop-grid.php">mũ</a></li>
-											<li><a href="single-product.php">áo</a></li>
+											<li class="title">Shop Layout</li>
+											<li><a href="shop-grid.php">Shop Grid</a></li>
+											<li><a href="single-product.php">Single Product</a></li>
 										</ul>
 										<ul class="item item03">
-											<li class="title">Loai2</li>
-											<li><a href="my-account.php">chuồng</a></li>
-											<li><a href="cart.php">giường</a></li>
-											
+											<li class="title">Shop Page</li>
+											<li><a href="my-account.php">My Account</a></li>
+											<li><a href="cart.php">Cart Page</a></li>
+											<li><a href="checkout.php">Checkout Page</a></li>
+											<li><a href="wishlist.php">Wishlist Page</a></li>
+											<li><a href="error404.php">404 Page</a></li>
+											<li><a href="faq.php">Faq Page</a></li>
 										</ul>
 										<ul class="item item03">
-											<li class="title">Loại</li>
-											<li><a href="shop-grid.php">kính</a></li>
-											<li><a href="shop-grid.php">váy</a></li>
-											
+											<li class="title">Bargain Books</li>
+											<li><a href="shop-grid.php">Bargain Bestsellers</a></li>
+											<li><a href="shop-grid.php">Activity Kits</a></li>
+											<li><a href="shop-grid.php">B&N Classics</a></li>
+											<li><a href="shop-grid.php">Books Under $5</a></li>
+											<li><a href="shop-grid.php">Bargain Books</a></li>
 										</ul>
 									</div>
 								</li>
-								<li class="drop"><a href="shop-grid.php">Nhà sản xuất</a>
+								<li class="drop"><a href="shop-grid.php">Books</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
-											<li class="title">NSX1</li>
-											<li><a href="shop-grid.php">côngty1</a></li>
-											<li><a href="shop-grid.php">côngty2 </a></li>
-											<li><a href="shop-grid.php">côngty3 </a></li>
-										
+											<li class="title">Categories</li>
+											<li><a href="shop-grid.php">Biography </a></li>
+											<li><a href="shop-grid.php">Business </a></li>
+											<li><a href="shop-grid.php">Cookbooks </a></li>
+											<li><a href="shop-grid.php">Health & Fitness </a></li>
+											<li><a href="shop-grid.php">History </a></li>
 										</ul>
 										<ul class="item item03">
-											<li class="title">NSX2</li>
-											<li><a href="shop-grid.php">côngty4</a></li>
-											<li><a href="shop-grid.php">công ty 5</a></li>
-											<li><a href="shop-grid.php">công ty 6</a></li>
-											
+											<li class="title">Customer Favourite</li>
+											<li><a href="shop-grid.php">Mystery</a></li>
+											<li><a href="shop-grid.php">Religion & Inspiration</a></li>
+											<li><a href="shop-grid.php">Romance</a></li>
+											<li><a href="shop-grid.php">Fiction/Fantasy</a></li>
+											<li><a href="shop-grid.php">Sleeveless</a></li>
 										</ul>
 										<ul class="item item03">
-											<li class="title">NSX3</li>
-											<li><a href="shop-grid.php">congty55 </a></li>
-											<li><a href="shop-grid.php">congty8</a></li>
-											<li><a href="shop-grid.php">congty9</a></li>
+											<li class="title">Collections</li>
+											<li><a href="shop-grid.php">Science </a></li>
+											<li><a href="shop-grid.php">Fiction/Fantasy</a></li>
+											<li><a href="shop-grid.php">Self-Improvemen</a></li>
 											<li><a href="shop-grid.php">Home & Garden</a></li>
 											<li><a href="shop-grid.php">Humor Books</a></li>
 										</ul>
 									</div>
 								</li>
-								<li class="drop"><a href="shop-grid.php">menu3</a>
+								<li class="drop"><a href="shop-grid.php">Kids</a>
 									<div class="megamenu mega02">
 										<ul class="item item02">
-											<li class="title">1</li>
-											<li><a href="shop-grid.php">1.1</a></li>
-											<li><a href="shop-grid.php">1.2</a></li>
-											<li><a href="shop-grid.php">1.3</a></li>
-											<li><a href="shop-grid.php">1.4</a></li>
-											<li><a href="shop-grid.php">1.5</a></li>
+											<li class="title">Top Collections</li>
+											<li><a href="shop-grid.php">American Girl</a></li>
+											<li><a href="shop-grid.php">Diary Wimpy Kid</a></li>
+											<li><a href="shop-grid.php">Finding Dory</a></li>
+											<li><a href="shop-grid.php">Harry Potter</a></li>
+											<li><a href="shop-grid.php">Land of Stories</a></li>
 										</ul>
 										<ul class="item item02">
-											<li class="title">2</li>
-											<li><a href="shop-grid.php">2.1</a></li>
-											<li><a href="shop-grid.php">2.2</a></li>
-											<li><a href="shop-grid.php">2.3</a></li>
-											<li><a href="shop-grid.php">2.4</a></li>
-											<li><a href="shop-grid.php">2.5</a></li>
+											<li class="title">More For Kids</li>
+											<li><a href="shop-grid.php">B&N Educators</a></li>
+											<li><a href="shop-grid.php">B&N Kids' Club</a></li>
+											<li><a href="shop-grid.php">Kids' Music</a></li>
+											<li><a href="shop-grid.php">Toys & Games</a></li>
+											<li><a href="shop-grid.php">Hoodies</a></li>
 										</ul>
 									</div>
-									
 								</li>
-								<li class="drop"><a href="#">3</a>
+								<li class="drop"><a href="#">Pages</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-											<li><a href="about.php">3.1</a></li>
-											<li class="label2"><a href="portfolio.php">3.2</a>
+											<li><a href="about.php">About Page</a></li>
+											<li class="label2"><a href="portfolio.php">Portfolio</a>
 												<ul>
-													<li><a href="portfolio.php">3.3</a></li>
-													<li><a href="portfolio-details.php">3.4</a></li>
+													<li><a href="portfolio.php">Portfolio</a></li>
+													<li><a href="portfolio-details.php">Portfolio Details</a></li>
 												</ul>
 											</li>
-											<li><a href="my-account.php">3.5</a></li>
-											<li><a href="cart.php">3.6</a></li>
-											<li><a href="checkout.php">3.7</a></li>
-											
+											<li><a href="my-account.php">My Account</a></li>
+											<li><a href="cart.php">Cart Page</a></li>
+											<li><a href="checkout.php">Checkout Page</a></li>
+											<li><a href="wishlist.php">Wishlist Page</a></li>
+											<li><a href="error404.php">404 Page</a></li>
+											<li><a href="faq.php">Faq Page</a></li>
+											<li><a href="team.php">Team Page</a></li>
 										</ul>
 									</div>
 								</li>
 								<li class="drop"><a href="blog.php">Blog</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-											<li><a href="blog.php">facebook</a></li>
-											<li><a href="blog-details.php">youtube</a></li>
+											<li><a href="blog.php">Blog Page</a></li>
+											<li><a href="blog-details.php">Blog Details</a></li>
 										</ul>
 									</div>
 								</li>
@@ -455,7 +464,39 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div><?php 
+require_once 'config.php';
+$top10LastPros = "select * from sanpham order by ID desc limit 10";
+$rs = load($top10LastPros);
+
+while($row = $rs->fetch_assoc()) {
+?>
+<div class="last_products" style = "width:828px; margin:auto; background:white;">
+  
+
+  <?php 
+  $sql  = "select * from sanpham order by NgayTao desc limit 10";
+  $rs= load($sql);
+  
+  while($row = $rs->fetch_assoc()) {
+  ?>
+      
+    <a href="product.php?id=<?php echo $row["ID"];?>" >   <div class="product_item">
+
+        <div class="title"><?php echo $row["TenSP"]; ?></div>
+       <div class="title"><?php echo $row["LoaiSP"]; ?></div></a>
+        <a href="product.php?id=<?php echo $row["ID"];?>" > <img  class="image"src="<?php echo $row["HinhAnh"] ?>"  border="0" alt="" /></a><div class="price"><?php echo $row['Gia'] ?>đ</div>
+
+          <div class="link">  <a href="#" > MUA HÀNG </a></div>
+
+
+
+    </div>
+  <?php } ?>
+</div>
+
+<?php } ?>
+
 					<!-- Start Single Product -->
 					<!-- Start Single Product -->
 					<div class="product product__style--3">
@@ -663,7 +704,7 @@
 					<div class="col-lg-12">
 						<div class="section__title text-center">
 							<h2 class="title__be--2">Bán <span class="color--theme">chạy nhất</span></h2>
-							<p>Dưới đây là một trong số các mặt hàng bán nhiều nhất của shop trong thời gian gần đây </p>
+	
 						</div>
 					</div>
 				</div>
@@ -3062,8 +3103,8 @@
 		                                    <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
 		                                </ul>
 		                            </div>
-		                            <div class="social-sharing">
-		                                <div class="widget widget_socialsharing_widget">
+		                                <div class="widget w
+		                            <div class="social-sharing">idget_socialsharing_widget">
 		                                    <h3 class="widget-title-modal">Share this product</h3>
 		                                    <ul class="social__net social__net--2 d-flex justify-content-start">
 		                                        <li class="facebook"><a href="#" class="rss social-icon"><i class="zmdi zmdi-rss"></i></a></li>
@@ -3086,10 +3127,11 @@
 		<!-- END QUICKVIEW PRODUCT -->
 	</div>
 	<!-- //Main wrapper -->
-
+<P>hIỆN THỊ SẢN PHÂM NHƯ ĐÚNG YÊU CẦU NGƯỜI DÙNG </P>
+<P>hIỆN THỊ 10 SẢN PHẨM CÓ NGƯỜI DÙNG TRUY XUẤT NHIỀU NHẤT NGƯỜI DÙNG  NGƯỜI ĐEM NHIỀU NHẤT TRONG TẤ</P>
 	<!-- JS Files -->
 	<script src="js/vendor/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
+	<script src="js/popper.min.js"></script>T 
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/active.js"></script>
