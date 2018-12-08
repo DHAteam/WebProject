@@ -71,109 +71,37 @@ $rs = load($top10LastPros);
 							<ul class="meninmenu d-flex justify-content-start">
 							
 								<li class="drop with--one--item"><a href="index.php">Home</a></li>
-								<li class="drop"><a href="#">Shop</a>
+								<li class="drop"><a href="shop-grid.php">Danh Mục</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
-											<li class="title">Shop Layout</li>
-											<li><a href="shop-grid.php">Shop Grid</a></li>
-											<li><a href="single-product.php">Single Product</a></li>
+											<li class="title">Loại sản phẩm </li>
+											<li><a href="shop-grid.php">Lồng-Nệm-Nhà </a></li>
+											<li><a href="shop-grid.php">Quần Áo </a></li>
+											<li><a href="shop-grid.php">Phụ kiện </a></li>
+											<li><a href="shop-grid.php">Ba lô vận chuyển </a></li>
+											<li><a href="shop-grid.php">Dụng cụ ăn uống vệ sinh </a></li>
 										</ul>
-										<ul class="item item03">
-											<li class="title">Shop Page</li>
-											<li><a href="my-account.php">My Account</a></li>
-											<li><a href="cart.php">Cart Page</a></li>
-											<li><a href="checkout.php">Checkout Page</a></li>
-											<li><a href="wishlist.php">Wishlist Page</a></li>
-											<li><a href="error404.php">404 Page</a></li>
-											<li><a href="faq.php">Faq Page</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Bargain Books</li>
-											<li><a href="shop-grid.php">Bargain Bestsellers</a></li>
-											<li><a href="shop-grid.php">Activity Kits</a></li>
-											<li><a href="shop-grid.php">B&N Classics</a></li>
-											<li><a href="shop-grid.php">Books Under $5</a></li>
-											<li><a href="shop-grid.php">Bargain Books</a></li>
-										</ul>
+
 									</div>
 								</li>
-								<li class="drop"><a href="shop-grid.php">Books</a>
-									<div class="megamenu mega03">
-										<ul class="item item03">
-											<li class="title">Categories</li>
-											<li><a href="shop-grid.php">Biography </a></li>
-											<li><a href="shop-grid.php">Business </a></li>
-											<li><a href="shop-grid.php">Cookbooks </a></li>
-											<li><a href="shop-grid.php">Health & Fitness </a></li>
-											<li><a href="shop-grid.php">History </a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Customer Favourite</li>
-											<li><a href="shop-grid.php">Mystery</a></li>
-											<li><a href="shop-grid.php">Religion & Inspiration</a></li>
-											<li><a href="shop-grid.php">Romance</a></li>
-											<li><a href="shop-grid.php">Fiction/Fantasy</a></li>
-											<li><a href="shop-grid.php">Sleeveless</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Collections</li>
-											<li><a href="shop-grid.php">Science </a></li>
-											<li><a href="shop-grid.php">Fiction/Fantasy</a></li>
-											<li><a href="shop-grid.php">Self-Improvemen</a></li>
-											<li><a href="shop-grid.php">Home & Garden</a></li>
-											<li><a href="shop-grid.php">Humor Books</a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="shop-grid.php">Kids</a>
+								<li class="drop"><a href="shop-grid.php">Nhà sản xuất</a>
 									<div class="megamenu mega02">
 										<ul class="item item02">
-											<li class="title">Top Collections</li>
-											<li><a href="shop-grid.php">American Girl</a></li>
-											<li><a href="shop-grid.php">Diary Wimpy Kid</a></li>
-											<li><a href="shop-grid.php">Finding Dory</a></li>
-											<li><a href="shop-grid.php">Harry Potter</a></li>
-											<li><a href="shop-grid.php">Land of Stories</a></li>
+											<li class="title">Top các nhà sản xuất </li>
+											<li><a href="shop-grid.php">Cty TNHH DuyCho</a></li>
+											<li><a href="shop-grid.php">Shop of Pet</a></li>
+											<li><a href="shop-grid.php">HienNynn Shop</a></li>
+											<li><a href="shop-grid.php">Hna Shop</a></li>
+											<li><a href="shop-grid.php">May Mặc Shop</a></li>
 										</ul>
-										<ul class="item item02">
-											<li class="title">More For Kids</li>
-											<li><a href="shop-grid.php">B&N Educators</a></li>
-											<li><a href="shop-grid.php">B&N Kids' Club</a></li>
-											<li><a href="shop-grid.php">Kids' Music</a></li>
-											<li><a href="shop-grid.php">Toys & Games</a></li>
-											<li><a href="shop-grid.php">Hoodies</a></li>
-										</ul>
+										
 									</div>
 								</li>
-								<li class="drop"><a href="#">Pages</a>
-									<div class="megamenu dropdown">
-										<ul class="item item01">
-											<li><a href="about.php">About Page</a></li>
-											<li class="label2"><a href="portfolio.php">Portfolio</a>
-												<ul>
-													<li><a href="portfolio.php">Portfolio</a></li>
-													<li><a href="portfolio-details.php">Portfolio Details</a></li>
-												</ul>
-											</li>
-											<li><a href="my-account.php">My Account</a></li>
-											<li><a href="cart.php">Cart Page</a></li>
-											<li><a href="checkout.php">Checkout Page</a></li>
-											<li><a href="wishlist.php">Wishlist Page</a></li>
-											<li><a href="error404.php">404 Page</a></li>
-											<li><a href="faq.php">Faq Page</a></li>
-											<li><a href="team.php">Team Page</a></li>
-										</ul>
-									</div>
+					
+								<li class="drop"><a href="dichvu.php">Dịch vụ</a>
+									
 								</li>
-								<li class="drop"><a href="blog.php">Blog</a>
-									<div class="megamenu dropdown">
-										<ul class="item item01">
-											<li><a href="blog.php">Blog Page</a></li>
-											<li><a href="blog-details.php">Blog Details</a></li>
-										</ul>
-									</div>
-								</li>
-								<li><a href="contact.php">Contact</a></li>
+								<li><a href="contact.php">Tất cả sản phẩm</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -464,13 +392,13 @@ $rs = load($top10LastPros);
 							<div class="product__content content--center">
 								<h4><a href="product_detail.php?id=<?php echo $data->ID; ?>"><?php echo $data->TenSP; ?></a></h4>
 								<ul class="prize d-flex">
-									<li><?php echo $data->Gia; ?></li>
-									<li class="old_prize"><?php echo $data->Gia; ?></li>
+									<li><?php echo $data->Gia; ?>đ</li>
+									
 								</ul>
 								<div class="action">
 									<div class="actions_inner">
 										<ul class="add_to_links">
-											<li><a class="cart" href="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
+											<li><a class="cart" hr444444ef="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
 											<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
 										</ul>
 									</div>
@@ -2831,24 +2759,7 @@ $rs = load($top10LastPros);
 					</div>
 				</div>
 			</div>
-			<!-- <div class="copyright__wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="copyright">
-								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">Free themes Cloud.</a> All Rights Reserved</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="payment text-right">
-								<img src="images/icons/payment.png" alt="" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div> -->
+	
 		</footer>
 		<!-- //Footer Area -->
 		<!-- QUICKVIEW PRODUCT -->
@@ -2935,8 +2846,7 @@ $rs = load($top10LastPros);
 		<!-- END QUICKVIEW PRODUCT -->
 	</div>
 	<!-- //Main wrapper -->
-<P>hIỆN THỊ SẢN PHÂM NHƯ ĐÚNG YÊU CẦU NGƯỜI DÙNG </P>
-<P>hIỆN THỊ 10 SẢN PHẨM CÓ NGƯỜI DÙNG TRUY XUẤT NHIỀU NHẤT NGƯỜI DÙNG  NGƯỜI ĐEM NHIỀU NHẤT TRONG TẤ</P>
+
 	<!-- JS Files -->
 	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>T 
