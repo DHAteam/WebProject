@@ -2,16 +2,77 @@
 <?php include_once("header.php"); ?>
 <!-- End Header -->
 
-
-
-<?php 
+<?php
 
 $id=$_REQUEST['id'];
-$sql = "select * from sanpham where id ='$id'";
-$rs = load($sql);
-$data = $rs->fetch_object();
+$sqlSP = "select * from sanpham where id ='$id'";
+$rsSP = load($sqlSP);
+$dataSP = $rsSP->fetch_object();
+
+$sqlTagPro = "select * from sanpham s, danhmuc d where s.LoaiSP = d.ID and s.ID = '$id'";
+$rsTagPro = load($sqlTagPro);
+$dataTagPro = $rsTagPro->fetch_object();
+
+$sqlNSXPro = "select n.* from sanpham s, nsx n where s.MaNSX = n.ID and s.ID = '$id'";
+$rsNSXPro = load($sqlNSXPro);
+$dataNSXPro = $rsNSXPro->fetch_object();
+
+$RelatePro = "select s.* from sanpham s, danhmuc d where s.LoaiSP = d.ID and d.ID = '$dataTagPro->ID' limit 5";
+$rsRelatePro = load($RelatePro);
+
+$RelateNSX = "select s.* from sanpham s, nsx n where s.MaNSX = n.ID and n.ID = '$dataNSXPro->ID' limit 5";
+$rsRelateNSX = load($RelateNSX);
+
+if (isset($_POST['addToCart'])) {
+	if (!isset($_SESSION["current_user"])) {
+		echo '<script>alert("Bạn phải đăng nhập để sử dụng tính năng này");</script>';
+	}
+	else {
+		$userIDOrd = $_SESSION["current_user"]->ID;
+		$tongTien = $_POST['soluong'] * $dataSP->Gia;
+		$diaChiGiao = $_SESSION["current_user"]->DiaChi;
+		$tenNguoiNhan = $_SESSION["current_user"]->UserName;
+		$SDT = $_SESSION["current_user"]->SDT;
+		$soLuong = $_POST['soluong'];
+		$sqlOrder = "insert into dathang(UserID,TongTien,NgayTao,DiaChiGiao,TenNguoiNhan,SDT) values ('$userIDOrd','$tongTien',curdate(),'$diaChiGiao','$tenNguoiNhan','$SDT')";
+		$rsSqlOrder = load($sqlOrder);
+		$sqlLoadOrder = "select * from dathang order by ID desc limit 1";
+		$idOrder = load($sqlLoadOrder);
+		$dataIdOrder = $idOrder->fetch_object();
+		$spID = $dataSP->ID;
+		$sqlInfoOrder = "insert into chitietdh(DatHangID,SPID,SL) values ('$dataIdOrder->ID','$spID','$soLuong')";
+		$rsSqlInfoOrder = load($sqlInfoOrder);
+
+		echo '<script>alert("Thêm vào giỏ thành công");</script>';
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+  
+
+
+
+
+
+
+
+
 
 ?>
+
 
         <div class="maincontent bg--white pt--80 pb--55">
         	<div class="container">
@@ -23,60 +84,39 @@ $data = $rs->fetch_object();
         						<div class="col-lg-6 col-12">
         							<div class="wn__fotorama__wrapper">
 	        							<div class="fotorama wn__fotorama__action" data-nav="thumbs" style="border: 2px solid #eff3f3;border-radius: 25px;-moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);-webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);">
-		        							  <a href="1.jpg"><img src="<?php echo $data->HinhAnh ?>"></a>
+		        							  <a href="1.jpg"><img src="<?php echo $dataSP->HinhAnh ?>"></a>
 	        							</div>
         							</div>
         						</div>
         						<div class="col-lg-6 col-12">
+								<form method="post" action="">
         							<div class="product__info__main">
 
 
 
-        								<h1 style="margin-top:20px;color:#e64e6f;"><?php echo $data->TenSP ?></h1>
+        								<h1 style="margin-top:20px;color:#e64e6f;"><?php echo $dataSP->TenSP ?></h1>
         								<div class="price-box">
-        									<span><?php echo $data->Gia ?>đ</span>
+        									<span><?php echo $dataSP->Gia ?>đ</span>
         								</div>
 										<div class="product__overview">
-        									<p><?php echo $data->MoTa ?></p>
+        									<p><?php echo $dataSP->MoTa ?></p>
+
+											Số lượng tồn kho: <?php echo $dataSP->SoLuong ?>
         								</div>
         								<div class="box-tocart d-flex">
         									<span>Số lượng:</span>
-        									<input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
+        									<input id="soluong" class="input-text qty" name="soluong" min="1" max="<?php echo $dataSP->SoLuong ?>" value="1" title="Số lượng" type="number">
         									<div class="addtocart__actions">
-        										<button class="tocart" type="submit" title="Add to Cart">Add to Cart</button>
+        										<button class="tocart" type="submit" name="addToCart" <?php if ($dataSP->SoLuong < 1) echo "disabled" ?>>Add to Cart</button>
 											</div>
 										</div>
 										<div class="product_meta">
 											<span class="posted_in">Danh mục: 
-												<a href="#">(chưa xử lý)</a>
+												<a href="product.php?danhmuc=<?php echo $dataTagPro->ID ?>"><?php echo $dataTagPro->TenDM ?></a>
 											</span>
 										</div>
-										<div class="product-share">
-											<ul>
-												<li class="categories-title">Share :</li>
-												<li>
-													<a href="#">
-														<i class="icon-social-twitter icons"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="icon-social-tumblr icons"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="icon-social-facebook icons"></i>
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<i class="icon-social-linkedin icons"></i>
-													</a>
-												</li>
-											</ul>
-										</div>
         							</div>
+								</form>
         						</div>
         					</div>
         				</div>
@@ -89,12 +129,12 @@ $data = $rs->fetch_object();
 	                        	<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
 									<div class="description__attribute">
 										<ul>
-											<li>• Tên sản phẩm: <?php echo $data->TenSP?></li>
-											<li>• Loại sản phẩm: <?php echo $data->LoaiSP ?></li>
-											<li>• Nhà sản xuất: <?php echo $data->MaNSX ?> (chưa xử lý)</li>
-											<li>• Xuất xứ: <?php echo $data->XuatXu ?></li>
-											<li>• Mô tả: <?php echo $data->MoTa ?></li>
-											<li>• Tình trạng: <?php echo $data->TinhTrang ?> (chưa xử lý)</li>
+											<li>• Tên sản phẩm: <?php echo $dataSP->TenSP?></li>
+											<li>• Loại sản phẩm: <?php echo $dataTagPro->TenDM ?></li>
+											<li>• Nhà sản xuất: <?php echo $dataNSXPro->TenNSX ?></li>
+											<li>• Xuất xứ: <?php echo $dataSP->XuatXu ?></li>
+											<li>• Mô tả: <?php echo $dataSP->MoTa ?></li>
+											<li>• Tình trạng: <?php echo $dataSP->TinhTrang ?></li>
 										</ul>
 									</div>
 	                        	</div>
@@ -105,35 +145,53 @@ $data = $rs->fetch_object();
 							<div class="section__title text-center" style="border-bottom: 3px solid #ebebeb;">
 								<h2 class="title__be--2">Sản phẩm cùng loại</h2>
 							</div>
-
+							
 							
 							<div class="row mt--60">
 								<div class="productcategory__slide--2 arrows_style owl-carousel owl-theme">
+
+								<?php 
+									while($dataRelatePro = $rsRelatePro->fetch_object()) {
+								?>
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
+									<form method="post" action="">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product.php"><img src="images/books/1.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product.php"><img src="images/books/2.jpg" alt="product image"></a>
+											<a class="first__img" href="product_detail.php?id=<?php echo $dataRelatePro->ID; ?>"><img src="<?php echo $dataRelatePro->HinhAnh; ?>" alt="product image"></a>
+											<input type="hidden" name="idRelatePro" value = "<?php echo $dataRelatePro->ID; ?>">
 											<div class="hot__box">
-												<span class="hot-label">BEST SALLER</span>
+												<span class="hot-label">Hot</span>
 											</div>
 										</div>
 										<div class="product__content content--center">
-											<h4><a href="single-product.php">ABC</a></h4>
+											<h4><a href="product_detail.php?id=<?php echo $dataRelatePro->ID; ?>"><?php echo $dataRelatePro->TenSP; ?></a></h4>
 											<ul class="prize d-flex">
-												<li>$35.00</li>
-												<li class="old_prize">$35.00</li>
+												<li><?php echo $dataRelatePro->Gia; ?>đ</li>
 											</ul>
+											<input type="hidden" name="priceRelatePro" value = "<?php echo $dataRelatePro->Gia; ?>">
 											<div class="action">
 												<div class="actions_inner">
 													<ul class="add_to_links">
-														<li><a class="cart" href="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><button type="submit" class="btn btn-default" style="margin-right:5px;" name="addToCartOnList" <?php if ($dataSP->SoLuong < 1) echo "disabled" ?>>Add to Cart</button></li>
 														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
 													</ul>
 												</div>
 											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
 										</div>
+									</form>
+
 									</div>
+
+								<?php } ?>
 									<!-- Start Single Product -->
 									<!-- Start Single Product -->
 									<!-- Start Single Product -->
@@ -146,31 +204,48 @@ $data = $rs->fetch_object();
 							</div>
 							<div class="row mt--60">
 								<div class="productcategory__slide--2 arrows_style owl-carousel owl-theme">
+
+
+								<?php 
+									while($dataRelateNSX = $rsRelateNSX->fetch_object()) {
+								?>
+
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product.php"><img src="images/books/1.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product.php"><img src="images/books/2.jpg" alt="product image"></a>
+											<a class="first__img" href="product_detail.php?id=<?php echo $dataRelateNSX->ID; ?>"><img src="<?php echo $dataRelateNSX->HinhAnh; ?>" alt="product image"></a>
 											<div class="hot__box">
-												<span class="hot-label">BEST SALLER</span>
+												<span class="hot-label">Hot</span>
 											</div>
 										</div>
 										<div class="product__content content--center">
-											<h4><a href="single-product.php">robin parrish</a></h4>
+											<h4><a href="product_detail.php?id=<?php echo $dataRelateNSX->ID; ?>"><?php echo $dataRelateNSX->TenSP; ?></a></h4>
 											<ul class="prize d-flex">
-												<li>$35.00</li>
-												<li class="old_prize">$35.00</li>
+												<li><?php echo $dataRelateNSX->Gia; ?>đ</li>
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
 													<ul class="add_to_links">
-														<li><a class="cart" href="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
+														<li><a class="cart" hr444444ef="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
 														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
 													</ul>
 												</div>
 											</div>
+											<div class="product__hover--content">
+												<ul class="rating d-flex">
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li class="on"><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+													<li><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div>
 										</div>
 									</div>
+
+								<?php } ?>
+
+
 								</div>
 							</div>
 						</div>
@@ -195,144 +270,83 @@ $data = $rs->fetch_object();
 		</div>
 		<!-- End Search Popup -->
 		<!-- Footer Area -->
-		<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-			<div class="footer-static-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="footer__widget footer__menu">
-								<div class="ft__logo">
-									<a href="index.php">
-										<img src="images/logo/3.png" alt="logo">
-									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages</p>
-								</div>
-								<div class="footer__content">
-									<ul class="social__net social__net--2 d-flex justify-content-center">
-										<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-										<li><a href="#"><i class="bi bi-google"></i></a></li>
-										<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-										<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-										<li><a href="#"><i class="bi bi-youtube"></i></a></li>
-									</ul>
-									<ul class="mainmenu d-flex justify-content-center">
-										<li><a href="index.php">Trending</a></li>
-										<li><a href="index.php">Best Seller</a></li>
-										<li><a href="index.php">All Product</a></li>
-										<li><a href="index.php">Wishlist</a></li>
-										<li><a href="index.php">Blog</a></li>
-										<li><a href="index.php">Contact</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="copyright__wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="copyright">
-								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">Free themes Cloud.</a> All Rights Reserved</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="payment text-right">
-								<img src="images/icons/payment.png" alt="" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- //Footer Area -->
-		<!-- QUICKVIEW PRODUCT -->
-		<div id="quickview-wrapper">
-		    <!-- Modal -->
-		    <div class="modal fade" id="productmodal" tabindex="-1" role="dialog">
-		        <div class="modal-dialog modal__container" role="document">
-		            <div class="modal-content">
-		                <div class="modal-header modal__header">
-		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		                </div>
-		                <div class="modal-body">
-		                    <div class="modal-product">
-		                        <!-- Start product images -->
-		                        <div class="product-images">
-		                            <div class="main-image images">
-		                                <img alt="big images" src="images/product/big-img/1.jpg">
-		                            </div>
-		                        </div>
-		                        <!-- end product images -->
-		                        <div class="product-info">
-		                            <h1>Simple Fabric Bags</h1>
-		                            <div class="rating__and__review">
-		                                <ul class="rating">
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                </ul>
-		                                <div class="review">
-		                                    <a href="#">4 customer reviews</a>
-		                                </div>
-		                            </div>
-		                            <div class="price-box-3">
-		                                <div class="s-price-box">
-		                                    <span class="new-price">$17.20</span>
-		                                    <span class="old-price">$45.00</span>
-		                                </div>
-		                            </div>
-		                            <div class="quick-desc">
-		                                Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
-		                            </div>
-		                            <div class="select__color">
-		                                <h2>Select color</h2>
-		                                <ul class="color__list">
-		                                    <li class="red"><a title="Red" href="#">Red</a></li>
-		                                    <li class="gold"><a title="Gold" href="#">Gold</a></li>
-		                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-		                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-		                                </ul>
-		                            </div>
-		                            <div class="select__size">
-		                                <h2>Select size</h2>
-		                                <ul class="color__list">
-		                                    <li class="l__size"><a title="L" href="#">L</a></li>
-		                                    <li class="m__size"><a title="M" href="#">M</a></li>
-		                                    <li class="s__size"><a title="S" href="#">S</a></li>
-		                                    <li class="xl__size"><a title="XL" href="#">XL</a></li>
-		                                    <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-		                                </ul>
-		                            </div>
-		                            <div class="addtocart-btn">
-		                                <a href="#">Add to cart</a>
-		                            </div>
-		                        </div><!-- .product-info -->
-		                    </div><!-- .modal-product -->
-		                </div><!-- .modal-body -->
-		            </div><!-- .modal-content -->
-		        </div><!-- .modal-dialog -->
-		    </div>
-		    <!-- END Modal -->
-		</div>
-		<!-- END QUICKVIEW PRODUCT -->
 
-	</div>
-	<!-- //Main wrapper -->
 
-	
 
-	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/active.js"></script>
-	
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<?php include_once("footer.php"); ?>
+<!-- End Footer -->
+
+
+
+
+
+
+
+
+
+
+
+<?php
+if (isset($_POST['addToCartOnList'])) {
+	if (!isset($_SESSION["current_user"])) {
+		echo '<script>alert("Bạn phải đăng nhập để sử dụng tính năng này");</script>';
+	}
+	else {
+		$userIDOrd = $_SESSION["current_user"]->ID;
+		$tongTien = $_POST['priceRelatePro'];
+		$diaChiGiao = $_SESSION["current_user"]->DiaChi;
+		$tenNguoiNhan = $_SESSION["current_user"]->UserName;
+		$SDT = $_SESSION["current_user"]->SDT;
+		$sqlOrder = "insert into dathang(UserID,TongTien,NgayTao,DiaChiGiao,TenNguoiNhan,SDT) values ('$userIDOrd','$tongTien',curdate(),'$diaChiGiao','$tenNguoiNhan','$SDT')";
+		$rsSqlOrder = load($sqlOrder);
+		$sqlLoadOrder = "select * from dathang order by ID desc limit 1";
+		$idOrder = load($sqlLoadOrder);
+		$dataIdOrder = $idOrder->fetch_object();
+		$spID = $_POST['idRelatePro'];
+		$sqlInfoOrder = "insert into chitietdh(DatHangID,SPID,SL) values ('$dataIdOrder->ID','$spID',1)";
+		$rsSqlInfoOrder = load($sqlInfoOrder);
+
+		echo '<script>alert("Thêm vào giỏ thành công!!!");</script>';
+	}
+}
+?>
