@@ -49,6 +49,11 @@ $rsNSX = load($sqlNSX);
 
 	<!-- Modernizer js -->
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+	<script>
+		function outOfStock() {
+  			alert("Hết hàng!");
+		}
+	</script>
 </head>
 <body>
 	<!--[if lte IE 9]>

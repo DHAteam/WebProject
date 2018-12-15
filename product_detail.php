@@ -107,7 +107,7 @@ if (isset($_POST['addToCart'])) {
         									<span>Số lượng:</span>
         									<input id="soluong" class="input-text qty" name="soluong" min="1" max="<?php echo $dataSP->SoLuong ?>" value="1" title="Số lượng" type="number">
         									<div class="addtocart__actions">
-        										<button class="tocart" type="submit" name="addToCart" <?php if ($dataSP->SoLuong < 1) echo "disabled" ?>>Add to Cart</button>
+        										<button class="tocart" type="submit" name="addToCart" <?php if ($dataSP->SoLuong < 1) echo "onclick='outOfStock()'" ?>>Add to Cart</button>
 											</div>
 										</div>
 										<div class="product_meta">
@@ -169,22 +169,15 @@ if (isset($_POST['addToCart'])) {
 												<li><?php echo $dataRelatePro->Gia; ?>đ</li>
 											</ul>
 											<input type="hidden" name="priceRelatePro" value = "<?php echo $dataRelatePro->Gia; ?>">
-											<div class="action">
+											<div class="action" style = "margin-top:100px;">
 												<div class="actions_inner">
 													<ul class="add_to_links">
-														<li><button type="submit" class="btn btn-default" style="margin-right:5px;" name="addToCartOnList" <?php if ($dataSP->SoLuong < 1) echo "disabled" ?>>Add to Cart</button></li>
-														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
+														<li><button type="submit" class="btn btn-default" name="addToCartRelatePro" <?php if ($dataRelatePro->SoLuong < 1) echo "onclick='outOfStock()'" ?>>Add to Cart</button></li>
 													</ul>
 												</div>
 											</div>
 											<div class="product__hover--content">
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
+												<?php echo "Kho: $dataRelatePro->SoLuong sản phẩm"?>
 											</div>
 										</div>
 									</form>
@@ -212,8 +205,10 @@ if (isset($_POST['addToCart'])) {
 
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
+									<form method="post" action="">
 										<div class="product__thumb">
 											<a class="first__img" href="product_detail.php?id=<?php echo $dataRelateNSX->ID; ?>"><img src="<?php echo $dataRelateNSX->HinhAnh; ?>" alt="product image"></a>
+											<input type="hidden" name="idRelateNSX" value = "<?php echo $dataRelateNSX->ID; ?>">
 											<div class="hot__box">
 												<span class="hot-label">Hot</span>
 											</div>
@@ -223,26 +218,20 @@ if (isset($_POST['addToCart'])) {
 											<ul class="prize d-flex">
 												<li><?php echo $dataRelateNSX->Gia; ?>đ</li>
 											</ul>
+											<input type="hidden" name="priceRelateNSX" value = "<?php echo $dataRelateNSX->Gia; ?>">
 											<div class="action">
-												<div class="actions_inner">
-													<ul class="add_to_links">
-														<li><a class="cart" hr444444ef="cart.php"><i class="bi bi-shopping-bag4"></i></a></li>
-														<li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><i class="bi bi-search"></i></a></li>
-													</ul>
-												</div>
+											<div class="actions_inner">
+												<ul class="add_to_links">
+													<li><button type="submit" class="btn btn-default" name="addToCartRelateNSX" <?php if ($dataRelateNSX->SoLuong < 1) echo "onclick='outOfStock()'" ?>>Add to Cart</button></li>
+												</ul>
+											</div>
 											</div>
 											<div class="product__hover--content">
-												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-												</ul>
+												<?php echo "Kho: $dataRelateNSX->SoLuong sản phẩm"?>
 											</div>
 										</div>
 									</div>
-
+									</form>	
 								<?php } ?>
 
 
@@ -327,7 +316,7 @@ if (isset($_POST['addToCart'])) {
 
 
 <?php
-if (isset($_POST['addToCartOnList'])) {
+if (isset($_POST['addToCartRelatePro'])) {
 	if (!isset($_SESSION["current_user"])) {
 		echo '<script>alert("Bạn phải đăng nhập để sử dụng tính năng này");</script>';
 	}
@@ -345,7 +334,32 @@ if (isset($_POST['addToCartOnList'])) {
 		$spID = $_POST['idRelatePro'];
 		$sqlInfoOrder = "insert into chitietdh(DatHangID,SPID,SL) values ('$dataIdOrder->ID','$spID',1)";
 		$rsSqlInfoOrder = load($sqlInfoOrder);
+		
+		echo '<script>alert("Thêm vào giỏ thành công!!!");</script>';
+	}
+}
+?>
 
+<?php
+if (isset($_POST['addToCartRelateNSX'])) {
+	if (!isset($_SESSION["current_user"])) {
+		echo '<script>alert("Bạn phải đăng nhập để sử dụng tính năng này");</script>';
+	}
+	else {
+		$userIDOrd = $_SESSION["current_user"]->ID;
+		$tongTien = $_POST['priceRelateNSX'];
+		$diaChiGiao = $_SESSION["current_user"]->DiaChi;
+		$tenNguoiNhan = $_SESSION["current_user"]->UserName;
+		$SDT = $_SESSION["current_user"]->SDT;
+		$sqlOrder = "insert into dathang(UserID,TongTien,NgayTao,DiaChiGiao,TenNguoiNhan,SDT) values ('$userIDOrd','$tongTien',curdate(),'$diaChiGiao','$tenNguoiNhan','$SDT')";
+		$rsSqlOrder = load($sqlOrder);
+		$sqlLoadOrder = "select * from dathang order by ID desc limit 1";
+		$idOrder = load($sqlLoadOrder);
+		$dataIdOrder = $idOrder->fetch_object();
+		$spID = $_POST['idRelateNSX'];
+		$sqlInfoOrder = "insert into chitietdh(DatHangID,SPID,SL) values ('$dataIdOrder->ID','$spID',1)";
+		$rsSqlInfoOrder = load($sqlInfoOrder);
+		
 		echo '<script>alert("Thêm vào giỏ thành công!!!");</script>';
 	}
 }
