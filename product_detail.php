@@ -34,19 +34,46 @@ if (isset($_POST['addToCart'])) {
 		$tenNguoiNhan = $_SESSION["current_user"]->UserName;
 		$SDT = $_SESSION["current_user"]->SDT;
 		$soLuong = $_POST['soluong'];
-		$sqlOrder = "insert into dathang(UserID,TongTien,NgayTao,DiaChiGiao,TenNguoiNhan,SDT) values ('$userIDOrd','$tongTien',curdate(),'$diaChiGiao','$tenNguoiNhan','$SDT')";
-		$rsSqlOrder = load($sqlOrder);
-		$sqlLoadOrder = "select * from dathang order by ID desc limit 1";
-		$idOrder = load($sqlLoadOrder);
-		$dataIdOrder = $idOrder->fetch_object();
 		$spID = $dataSP->ID;
-		$sqlInfoOrder = "insert into chitietdh(DatHangID,SPID,SL) values ('$dataIdOrder->ID','$spID','$soLuong')";
-		$rsSqlInfoOrder = load($sqlInfoOrder);
+		$sqlCheckCart = "select count(*) as row from dathang where UserID = $userIDOrd and TinhTrang = 'Chưa thanh toán'";
+		$loadSqlCheckCart = load($sqlCheckCart);
+		$rsSqlCheckCart = $loadSqlCheckCart->fetch_object()->row;
+
+		if ($rsSqlCheckCart == 0) {
+			$sqlOrder = "insert into dathang(UserID,TongTien,TinhTrang,NgayTao,DiaChiGiao,TenNguoiNhan,SDT)                               
+						select $userIDOrd,$tongTien,'Chưa thanh toán',curdate(),'$diaChiGiao','$tenNguoiNhan',$SDT";
+			$rsSqlOrder = load($sqlOrder);
+			$sqlInfoOrder = "insert into chitietdh(DatHangID,SPID,SL)
+							select ID, $spID,$soLuong
+							from dathang
+							order by ID desc limit 1";
+			$rsSqlInfoOrder = load($sqlInfoOrder);
+		}
+
+		else {
+			$sql = "select * from dathang where UserID = $userIDOrd and TinhTrang = 'Chưa thanh toán'";
+			$loadSQL = load($sql);
+			$idOrd = $loadSQL->fetch_object()->ID;
+			$sql2 = "select count(*) as row from chitietdh where DatHangID = $idOrd and SPID = $spID";
+			$loadSQL2 = load($sql2);
+			$row = $loadSQL2->fetch_object()->row;
+			if ($row == 0) {
+				$sql3 = "insert into chitietdh(DatHangID,SPID,SL) values ($idOrd,$spID,$soLuong)";
+				$loadSQL3 = load($sql3);
+			}
+			else {
+				
+				$sqlAddSL = "update chitietdh set SL = SL+$soLuong where SPID = $spID and DatHangID = $idOrd";
+				$loadSqlAddSL = load($sqlAddSL);
+			}
+		}
+
+
 
 		echo '<script>alert("Thêm vào giỏ thành công");</script>';
+		echo "<meta http-equiv='refresh' content='0'>";
 	}
 }
-
 
 
 
@@ -336,6 +363,7 @@ if (isset($_POST['addToCartRelatePro'])) {
 		$rsSqlInfoOrder = load($sqlInfoOrder);
 		
 		echo '<script>alert("Thêm vào giỏ thành công!!!");</script>';
+		echo "<meta http-equiv='refresh' content='0'>";
 	}
 }
 ?>
@@ -361,6 +389,7 @@ if (isset($_POST['addToCartRelateNSX'])) {
 		$rsSqlInfoOrder = load($sqlInfoOrder);
 		
 		echo '<script>alert("Thêm vào giỏ thành công!!!");</script>';
+		echo "<meta http-equiv='refresh' content='0'>";
 	}
 }
 ?>

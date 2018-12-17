@@ -15,6 +15,28 @@ $rsDanhMuc = load($sqlDanhMuc);
 
 $sqlNSX = "select * from nsx";
 $rsNSX = load($sqlNSX);
+$idUser = $_SESSION["current_user"]->ID;
+$dataNum = 0;
+$dataToTalPrice = 0;
+if (isset($_SESSION["current_user"])) {
+	
+
+	$sqlCart = "select c.SPID, count(*) as soluong
+				from dathang d, chitietdh c
+				where UserID = '$idUser' and c.DatHangID = d.ID
+				group by c.SPID";
+	$rsSQLCart = load($sqlCart);
+	$dataSQLCart = $rsSQLCart->fetch_object();
+
+	$sqlNumItem = "select count(*) as soluong, sum(d.TongTien) as totalPrice
+				from dathang d, chitietdh c
+				where UserID = '$idUser' and c.DatHangID = d.ID";
+	$rsSqlNumItem = load($sqlNumItem);
+	$dataNumItem = $rsSqlNumItem->fetch_object();
+	$dataNum = $dataNumItem->soluong;
+	$dataToTalPrice = $dataNumItem->totalPrice;
+}
+
 
 ?>
 
@@ -112,66 +134,42 @@ $rsNSX = load($sqlNSX);
 					<div class="col-md-8 col-sm-8 col-5 col-lg-2">
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
 							<li class="shop_search"><a class="search__active" href="#"></a></li>
-							<li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">3</span></a>
+							<li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun"><?php echo $dataNum ?></span></a>
 								<!-- Start Shopping Cart -->
 								<div class="block-minicart minicart__active">
 									<div class="minicart-content-wrapper">
+								<?php if (isset($_SESSION["current_user"])) { ?>
 										<div class="micart__close">
 											<span>close</span>
 										</div>
 										<div class="items-total d-flex justify-content-between">
-											<span>3 items</span>
-											<span>Cart Subtotal</span>
+											<span><?php echo $dataNum ?> sản phẩm trong giỏ</span>
+											<span>Tổng tiền</span>
 										</div>
 										<div class="total_amount text-right">
-											<span>$66.00</span>
+											<span><?php echo "$dataToTalPrice đ"?></span>
 										</div>
 										<div class="mini_action checkout">
 											<a class="checkout__btn" href="cart.php">Go to Checkout</a>
 										</div>
 										<div class="single__items">
 											<div class="miniproduct">
-												<div class="item01 d-flex">
-													<div class="thumb">
-														<a href="product-details.php"><img src="images/product/sm-img/1.jpg" alt="product images"></a>
-													</div>
-													<div class="content">
-														<h6><a href="product-details.php">Voyage Yoga Bag</a></h6>
-														<span class="prize">$30.00</span>
-														<div class="product_prize d-flex justify-content-between">
-															<span class="qun">Qty: 01</span>
-															<ul class="d-flex justify-content-end">
-																<li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-																<li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-												<div class="item01 d-flex mt--20">
-													<div class="thumb">
-														<a href="product-details.php"><img src="images/product/sm-img/3.jpg" alt="product images"></a>
-													</div>
-													<div class="content">
-														<h6><a href="product-details.php">Impulse Duffle</a></h6>
-														<span class="prize">$40.00</span>
-														<div class="product_prize d-flex justify-content-between">
-															<span class="qun">Qty: 03</span>
-															<ul class="d-flex justify-content-end">
-																<li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-																<li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
+
+											<?php
+												$sqlProsInCart = "select s.TenSP as TenSanPham,c.SL*s.Gia as TongGia,c.SL as SoLuong from chitietdh c, dathang d, sanpham s where d.ID = c.DatHangID and d.UserID = $idUser and s.ID = c.SPID";
+												$loadProsInCart = load($sqlProsInCart);
+												while($dataProsInCart = $loadProsInCart->fetch_object()) {
+											?>
+
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
 														<a href="product-details.php"><img src="images/product/sm-img/2.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
-														<h6><a href="product-details.php">Compete Track Tote</a></h6>
-														<span class="prize">$40.00</span>
+														<h6><a href="product-details.php"><?php echo $dataProsInCart->TenSanPham; ?></a></h6>
+														<span class="prize"><?php echo $dataProsInCart->TongGia; ?></span>
 														<div class="product_prize d-flex justify-content-between">
-															<span class="qun">Qty: 03</span>
+															<span class="qun">Qty: <?php echo $dataProsInCart->SoLuong; ?></span>
 															<ul class="d-flex justify-content-end">
 																<li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
 																<li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
@@ -179,6 +177,12 @@ $rsNSX = load($sqlNSX);
 														</div>
 													</div>
 												</div>
+											
+											<?php 
+												}
+											?>
+
+
 											</div>
 										</div>
 										<div class="mini_action cart">
@@ -186,6 +190,8 @@ $rsNSX = load($sqlNSX);
 										</div>
 									</div>
 								</div>
+								<?php }
+								else echo "Bạn phải đăng nhập trước!" ?>
 								<!-- End Shopping Cart -->
 							</li>
 
