@@ -27,14 +27,13 @@ if (isset($_SESSION["current_user"])) {
 				group by c.SPID";
 	$rsSQLCart = load($sqlCart);
 	$dataSQLCart = $rsSQLCart->fetch_object();
-
-	$sqlNumItem = "select count(*) as soluong, sum(d.TongTien) as totalPrice
-				from dathang d, chitietdh c
-				where UserID = '$idUser' and c.DatHangID = d.ID";
-	$rsSqlNumItem = load($sqlNumItem);
-	$dataNumItem = $rsSqlNumItem->fetch_object();
-	$dataNum = $dataNumItem->soluong;
-	$dataToTalPrice = $dataNumItem->totalPrice;
+	$num = 0;
+	$totalPrice = 0;
+	$sqlItem = "select d.TongTien as TT, sum(c.SL) as TongSoSP
+					from dathang d, chitietdh c
+					where UserID = '$idUser' and c.DatHangID = d.ID";
+	$rsSqlItem = load($sqlItem);
+	$dataSqlItem = $rsSqlItem->fetch_object();
 }
 
 
@@ -134,7 +133,7 @@ if (isset($_SESSION["current_user"])) {
 					<div class="col-md-8 col-sm-8 col-5 col-lg-2">
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
 							<li class="shop_search"><a class="search__active" href="#"></a></li>
-							<li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun"><?php echo $dataNum ?></span></a>
+							<li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun"><?php echo $dataSqlItem->TongSoSP ?></span></a>
 								<!-- Start Shopping Cart -->
 								<div class="block-minicart minicart__active">
 									<div class="minicart-content-wrapper">
@@ -142,16 +141,7 @@ if (isset($_SESSION["current_user"])) {
 										<div class="micart__close">
 											<span>close</span>
 										</div>
-										<div class="items-total d-flex justify-content-between">
-											<span><?php echo $dataNum ?> sản phẩm trong giỏ</span>
-											<span>Tổng tiền</span>
-										</div>
-										<div class="total_amount text-right">
-											<span><?php echo "$dataToTalPrice đ"?></span>
-										</div>
-										<div class="mini_action checkout">
-											<a class="checkout__btn" href="cart.php">Go to Checkout</a>
-										</div>
+										
 										<div class="single__items">
 											<div class="miniproduct">
 
@@ -179,7 +169,10 @@ if (isset($_SESSION["current_user"])) {
 												</div>
 											
 											<?php 
+													$num++;
+													$totalPrice += $dataProsInCart->TongGia;
 												}
+												
 											?>
 
 
@@ -187,6 +180,17 @@ if (isset($_SESSION["current_user"])) {
 										</div>
 										<div class="mini_action cart">
 											<a class="cart__btn" href="cart.php">View and edit cart</a>
+										</div>
+
+										<div class="items-total d-flex justify-content-between" style="margin-top:20px;">
+											<span><?php echo $dataSqlItem->TongSoSP ?> sản phẩm trong giỏ</span>
+											<span>Tổng tiền</span>
+										</div>
+										<div class="total_amount text-right">
+											<span><?php echo "$dataSqlItem->TT đ"?></span>
+										</div>
+										<div class="mini_action checkout">
+											<a class="checkout__btn" href="cart.php">Go to Checkout</a>
 										</div>
 									</div>
 								</div>
