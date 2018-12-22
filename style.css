@@ -5336,12 +5336,12 @@ h3.widget-title-modal {
   background: #e59285 none repeat scroll 0 0;
   color: #fff; }
 .cartbox-total {
-  background: #f6f6f6 none repeat scroll 0 0;
+  background:none repeat scroll 0 0;
   padding: 0 40px; }
 .cartbox__total__area {
   margin-top: 50px; }
 .cart__total__amount {
-  background: #e59285 none repeat scroll 0 0;
+  background: none repeat scroll 0 0;
   display: flex;
   height: 60px;
   justify-content: space-between;
