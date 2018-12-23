@@ -9,6 +9,8 @@ else if ($current_file == "my-account.php")
 	$current_title = "Tài khoản";
 else if ($current_file == "product_detail.php")
 	$current_title = "Chi tiết sản phẩm";
+else if ($current_file == "cart.php")
+	$current_title = "Giỏ hàng";
 
 $sqlDanhMuc = "select * from danhmuc";
 $rsDanhMuc = load($sqlDanhMuc);
