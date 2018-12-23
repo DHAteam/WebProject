@@ -26,7 +26,6 @@ CREATE TABLE `chitietdh`  (
   `DatHangID` int(11) NULL DEFAULT NULL,
   `SPID` int(11) NULL DEFAULT NULL,
   `SL` int(11) NULL DEFAULT NULL,
-  `TinhTrang` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `NgayDuKienGiao` date NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `DatHangID`(`DatHangID`) USING BTREE
