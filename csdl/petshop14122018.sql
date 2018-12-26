@@ -26,7 +26,6 @@ CREATE TABLE `chitietdh`  (
   `DatHangID` int(11) NULL DEFAULT NULL,
   `SPID` int(11) NULL DEFAULT NULL,
   `SL` int(11) NULL DEFAULT NULL,
-  `TinhTrang` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `NgayDuKienGiao` date NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   INDEX `DatHangID`(`DatHangID`) USING BTREE
@@ -107,7 +106,6 @@ CREATE TABLE `nguoidung`  (
   `Pass` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `Email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `HinhAnh` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `Quyen` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `DiaChi` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `SDT` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
@@ -116,7 +114,7 @@ CREATE TABLE `nguoidung`  (
 -- ----------------------------
 -- Records of nguoidung
 -- ----------------------------
-INSERT INTO `nguoidung` VALUES (1, 'admin', 'admin', '123@123.cc', NULL, NULL, '123123', '123123');
+INSERT INTO `nguoidung` VALUES (1, 'admin', 'admin', '123@123.cc', NULL, '123123', '123123');
 
 -- ----------------------------
 -- Table structure for nsx
