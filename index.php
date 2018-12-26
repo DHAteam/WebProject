@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 require_once 'config.php';
 $top10LastPros = "select * from sanpham order by ID desc limit 10";
 $rs = load($top10LastPros);

@@ -31,7 +31,6 @@ if (isset($_SESSION["current_user"])) {
 				group by c.SPID";
 	$rsSQLCart = load($sqlCart);
 	$dataSQLCart = $rsSQLCart->fetch_object();
-	$num = 0;
 	$totalPrice = 0;
 	$sqlItem = "select d.TongTien as TT, sum(c.SL) as TongSoSP
 					from dathang d, chitietdh c
@@ -42,7 +41,6 @@ if (isset($_SESSION["current_user"])) {
 		$dataSqlItem->TongSoSP = 0;
 }
 else {
-	$num = 0;
 	$dataSqlItem->TongSoSP = 0;
 }
 
@@ -180,7 +178,6 @@ else {
 												</div>
 											
 											<?php 
-													$num++;
 													$totalPrice += $dataProsInCart->TongGia;
 												}
 												
