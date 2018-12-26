@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once 'config.php';
-
 $current_file = basename($_SERVER['PHP_SELF']);  
 if ($current_file == "index.php")
 	$current_title = "Trang chủ";
@@ -11,13 +10,16 @@ else if ($current_file == "product_detail.php")
 	$current_title = "Chi tiết sản phẩm";
 else if ($current_file == "cart.php")
 	$current_title = "Giỏ hàng";
+else if ($current_file == "checkout.php")
+	$current_title = "Thanh toán";
 
 $sqlDanhMuc = "select * from danhmuc";
 $rsDanhMuc = load($sqlDanhMuc);
 
 $sqlNSX = "select * from nsx";
 $rsNSX = load($sqlNSX);
-$idUser = $_SESSION["current_user"]->ID;
+if(isset($_SESSION["current_user"]))
+	$idUser = $_SESSION["current_user"]->ID;
 $dataNum = 0;
 $dataToTalPrice = 0;
 if (isset($_SESSION["current_user"])) {
@@ -33,9 +35,15 @@ if (isset($_SESSION["current_user"])) {
 	$totalPrice = 0;
 	$sqlItem = "select d.TongTien as TT, sum(c.SL) as TongSoSP
 					from dathang d, chitietdh c
-					where UserID = '$idUser' and c.DatHangID = d.ID";
+					where UserID = '$idUser' and c.DatHangID = d.ID and d.TinhTrang = 'Chưa giao'";
 	$rsSqlItem = load($sqlItem);
 	$dataSqlItem = $rsSqlItem->fetch_object();
+	if ($dataSqlItem->TongSoSP == "")
+		$dataSqlItem->TongSoSP = 0;
+}
+else {
+	$num = 0;
+	$dataSqlItem->TongSoSP = 0;
 }
 
 
@@ -143,12 +151,17 @@ if (isset($_SESSION["current_user"])) {
 										<div class="micart__close">
 											<span>close</span>
 										</div>
-										
+										<?php
+											if($dataSqlItem->TongSoSP==0) {
+										?>
+										<div>Không có sản phẩm nào trong giỏ hàng</div>
+											<?php } else {
+										?>
 										<div class="single__items">
 											<div class="miniproduct">
 
 											<?php
-												$sqlProsInCart = "select s.TenSP as TenSanPham,c.SL*s.Gia as TongGia,c.SL as SoLuong from chitietdh c, dathang d, sanpham s where d.ID = c.DatHangID and d.UserID = $idUser and s.ID = c.SPID";
+												$sqlProsInCart = "select s.TenSP as TenSanPham,c.SL*s.Gia as TongGia,c.SL as SoLuong,s.Gia as GiaSP from chitietdh c, dathang d, sanpham s where d.ID = c.DatHangID and d.UserID = $idUser and s.ID = c.SPID and d.TinhTrang = 'Chưa giao'";
 												$loadProsInCart = load($sqlProsInCart);
 												while($dataProsInCart = $loadProsInCart->fetch_object()) {
 											?>
@@ -159,13 +172,9 @@ if (isset($_SESSION["current_user"])) {
 													</div>
 													<div class="content">
 														<h6><a href="product-details.php"><?php echo $dataProsInCart->TenSanPham; ?></a></h6>
-														<span class="prize"><?php echo $dataProsInCart->TongGia; ?></span>
+														<span class="prize"><?php echo $dataProsInCart->GiaSP; ?></span>
 														<div class="product_prize d-flex justify-content-between">
 															<span class="qun">Qty: <?php echo $dataProsInCart->SoLuong; ?></span>
-															<ul class="d-flex justify-content-end">
-																<li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-																<li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-															</ul>
 														</div>
 													</div>
 												</div>
@@ -192,11 +201,12 @@ if (isset($_SESSION["current_user"])) {
 											<span><?php echo "$dataSqlItem->TT đ"?></span>
 										</div>
 										<div class="mini_action checkout">
-											<a class="checkout__btn" href="cart.php">Go to Checkout</a>
+											<a class="checkout__btn" href="checkout.php">Go to Checkout</a>
 										</div>
 									</div>
 								</div>
 								<?php }
+								}
 								else echo "Bạn phải đăng nhập trước!" ?>
 								<!-- End Shopping Cart -->
 							</li>

@@ -51,7 +51,7 @@ $rs = load($top10LastPros);
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
 		<!-- Header -->
-		<header id="wn__header" class="header__area header__absolute sticky__header zig-zag-bottom">
+		<header id="wn__header" class="header__area header__absolute sticky__header">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">

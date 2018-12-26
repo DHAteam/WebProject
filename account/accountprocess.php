@@ -19,18 +19,21 @@ if (isset($_POST["btnReg"])) {
 		$checkInfoReg = 0;
 	}
 	else {
-			$sql="select * from user where username='$username'";
+			$sql="select * from nguoidung where UserName='$username'";
 			$rs = load($sql);
 		
 			if ($rs->num_rows > 0) {
 				$checkNotExist = 0;
 			}
 			else {
-				$sqlquery = "insert into user(username,userpass,userphone,useraddr,useremail,userphoto,userpermiss) values ('$username','$password','$phone','$addr','$email','img/userdefaultphoto.jpg',0)";
+				$sqlquery = "insert into nguoidung(UserName,Pass,Email,HinhAnh,DiaChi,SDT) values ('$username','$password','$email','img/userdefaultphoto.jpg','$addr','$phone')";
 				$add = load($sqlquery);
-				$_SESSION["current_user"]->UserName = $username;
+				$sql = "select * from nguoidung where UserName = '$username'";
+				$load = load($sql);
+				$data = $load->fetch_object();
+				$_SESSION["current_user"] = $data;
 				$_SESSION["loged"] = 1;   
-				header("Location: index.php");
+				header("Location:index.php");
 			}
 	  }
 }
@@ -53,6 +56,7 @@ if (isset($_POST["btnLogin"])) {
 			if ($username_ == $data->UserName && $password_ == $data->Pass) {
 				$_SESSION["current_user"] = $data;
 				$_SESSION["loged"] = 1;
+				header("Location:index.php");
 			}
 			else {
 				$flag = 0;

@@ -47,13 +47,13 @@ if (isset($_POST['addToCart'])) {
 			$spID = $_POST['idSP'];
 		}
 
-		$sqlCheckCart = "select count(*) as row from dathang where UserID = $userIDOrd and TinhTrang = 'Chưa thanh toán'";
+		$sqlCheckCart = "select count(*) as row from dathang where UserID = $userIDOrd and TinhTrang = 'Chưa giao'";
 		$loadSqlCheckCart = load($sqlCheckCart);
 		$rsSqlCheckCart = $loadSqlCheckCart->fetch_object()->row;
 
 		if ($rsSqlCheckCart == 0) {
 			$sqlOrder = "insert into dathang(UserID,TongTien,TinhTrang,NgayTao,DiaChiGiao,TenNguoiNhan,SDT)                               
-						select $userIDOrd,$tongTien,'Chưa thanh toán',curdate(),'$diaChiGiao','$tenNguoiNhan',$SDT";
+						select $userIDOrd,$tongTien,'Chưa giao',curdate(),'$diaChiGiao','$tenNguoiNhan',$SDT";
 			$rsSqlOrder = load($sqlOrder);
 			$sqlInfoOrder = "insert into chitietdh(DatHangID,SPID,SL)
 							select ID, $spID,$soLuong
@@ -63,7 +63,7 @@ if (isset($_POST['addToCart'])) {
 		}
 
 		else {
-			$sql = "select * from dathang where UserID = $userIDOrd and TinhTrang = 'Chưa thanh toán'";
+			$sql = "select * from dathang where UserID = $userIDOrd and TinhTrang = 'Chưa giao'";
 			$loadSQL = load($sql);
 			$idOrd = $loadSQL->fetch_object()->ID;
 			$sql2 = "select count(*) as row from chitietdh where DatHangID = $idOrd and SPID = $spID";
@@ -72,14 +72,26 @@ if (isset($_POST['addToCart'])) {
 			if ($row == 0) {
 				$sql3 = "insert into chitietdh(DatHangID,SPID,SL) values ($idOrd,$spID,$soLuong)";
 				$loadSQL3 = load($sql3);
-				$sqlAddGia = "update dathang set TongTien = TongTien+$tongTien where UserID = $userIDOrd and TinhTrang = 'Chưa thanh toán'";
-				$loadSQLAddGia = load($sqlAddGia);
+				$sql= "select sum(c.SL*s.Gia) as TongGia
+						from chitietdh c,dathang d,sanpham s
+						where c.DatHangID = d.ID and d.ID = $idOrd and d.TinhTrang='Chưa giao' and c.SPID = s.ID
+						GROUP BY d.ID";
+				$load=load($sql);				
+				$tgTien = $load->fetch_object()->TongGia;				
+				$sql="update dathang set TongTien = $tgTien	where UserID = $userIDOrd and TinhTrang = 'Chưa giao'";
+				$load = load($sql);
 			}
 			else {
 				$sqlAddSL = "update chitietdh set SL = SL+$soLuong where SPID = $spID and DatHangID = $idOrd";
 				$loadSqlAddSL = load($sqlAddSL);
-				$sqlAddGia = "update dathang set TongTien = TongTien+$tongTien where UserID = $userIDOrd and TinhTrang = 'Chưa thanh toán'";
-				$loadSQLAddGia = load($sqlAddGia);
+				$sql= "select sum(c.SL*s.Gia) as TongGia
+						from chitietdh c,dathang d,sanpham s
+						where c.DatHangID = d.ID and d.ID = $idOrd and d.TinhTrang='Chưa giao' and c.SPID = s.ID
+						GROUP BY d.ID";
+				$load=load($sql);				
+				$tgTien = $load->fetch_object()->TongGia;				
+				$sql="update dathang set TongTien = $tgTien	where UserID = $userIDOrd and TinhTrang = 'Chưa giao'";
+				$load = load($sql);
 			}
 		}
 

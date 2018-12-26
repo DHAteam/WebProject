@@ -6,17 +6,23 @@
 
 
 <?php
-$userIDOrd = $_SESSION["current_user"]->ID;
+if(isset($_SESSION["current_user"]))
+	$userIDOrd = $_SESSION["current_user"]->ID;
 if (isset($_GET['action']) && $_GET['action']=="remove") {
-	$sql = "select ID as idDH from dathang where TinhTrang = 'Chưa thanh Toán' and UserID = $userIDOrd";
+	$sql = "select ID as idDH from dathang where TinhTrang = 'Chưa giao' and UserID = $userIDOrd";
 	$loadSQL = load($sql);
 	$idDH = $loadSQL->fetch_object()->idDH;	
 	$idSP=intval($_GET['id']); 
 	$sql="delete from chitietdh where SPID = $idSP and DatHangID = $idDH";
 	$loadSQL = load($sql);
-
-
-
+	$sql= "select sum(c.SL*s.Gia) as TongGia
+			from chitietdh c,dathang d,sanpham s
+			where c.DatHangID = d.ID and d.ID = $idDH and d.TinhTrang='Chưa giao' and c.SPID = s.ID
+			GROUP BY d.ID";
+	$load=load($sql);				
+	$tgTien = $load->fetch_object()->TongGia;				
+	$sql="update dathang set TongTien = $tgTien	where UserID = $userIDOrd and TinhTrang = 'Chưa giao'";
+	$load = load($sql);
 
 
 	
@@ -25,7 +31,7 @@ if (isset($_GET['action']) && $_GET['action']=="remove") {
 }
 
 if (isset($_POST['updateSL'])) {
-	$sql = "select ID as idDH from dathang where TinhTrang = 'Chưa thanh Toán' and UserID = $userIDOrd";
+	$sql = "select ID as idDH from dathang where TinhTrang = 'Chưa giao' and UserID = $userIDOrd";
 	$loadSQL = load($sql);
 	$idDH = $loadSQL->fetch_object()->idDH;
 	$idSP=$_POST['idSP'];
@@ -43,14 +49,14 @@ if (isset($_POST['updateSL'])) {
                     <div class="col-md-12 col-sm-12 ol-lg-12">
 
 					<?php if (!isset($_SESSION["current_user"])) { ?>
-					<div>Bạn cần đăng nhập trước để xem giỏ hàng</div>
+					<div style="text-align:center;">Bạn cần đăng nhập trước để xem giỏ hàng</div>
 					<?php }
 					else {
-					$checkCart = "select count(*) as soSPtrongGio from chitietdh c, dathang d where d.TinhTrang = 'Chưa thanh toán' and d.ID = c.DatHangID";
+					$checkCart = "select count(*) as soSPtrongGio from chitietdh c, dathang d where d.TinhTrang = 'Chưa giao' and d.ID = c.DatHangID";
 					$loadCheckCart = load($checkCart);
 					$soSPtrongGio = $loadCheckCart->fetch_object()->soSPtrongGio;
 					if ($soSPtrongGio == 0) { ?>
-					<div>Không có sp nào trong giỏ</div>
+					<div style="text-align:center;">Không có sp nào trong giỏ</div>
 					<?php }
 					else 	{
 					?>
@@ -60,18 +66,18 @@ if (isset($_POST['updateSL'])) {
                                 <table>
                                     <thead>
                                         <tr class="title-top">
-                                            <th class="product-thumbnail">Image</th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
-                                            <th class="product-remove" style="border-right:1px solid #ededed;">Remove</th>
+                                            <th class="product-thumbnail">Ảnh sản phẩm</th>
+                                            <th class="product-name">Sản phẩm</th>
+                                            <th class="product-price">Giá</th>
+                                            <th class="product-quantity">Số lượng</th>
+                                            <th class="product-subtotal">Tổng</th>
+                                            <th class="product-remove" style="border-right:1px solid #ededed;">Xóa</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 									<?php
 									$current_url = basename($_SERVER['PHP_SELF']); 
-									$sqlProsInCart = "select s.TenSP as TenSanPham,c.SL*s.Gia as TongGia,c.SL as SoLuong, s.Gia as giaSP, c.SPID as idSP from chitietdh c, dathang d, sanpham s where d.ID = c.DatHangID and d.UserID = $idUser and s.ID = c.SPID";
+									$sqlProsInCart = "select s.TenSP as TenSanPham,c.SL*s.Gia as TongGia,c.SL as SoLuong, s.Gia as giaSP, c.SPID as idSP from chitietdh c, dathang d, sanpham s where d.ID = c.DatHangID and d.UserID = $userIDOrd and s.ID = c.SPID and d.TinhTrang = 'Chưa giao'";
 									$loadProsInCart = load($sqlProsInCart);
 									while($dataProsInCart = $loadProsInCart->fetch_object()) {
 									?>
@@ -93,27 +99,27 @@ if (isset($_POST['updateSL'])) {
                         <div style = "float:right;margin-top:20px;margin-right:5px;font-family:Poppins,sans-serif;font-size: 16px;">
 						<div>Tổng:
 						<?php
-							$sql = "select ID as idDH from dathang where TinhTrang = 'Chưa thanh Toán' and UserID = $userIDOrd";
+							$sql = "select ID as idDH from dathang where TinhTrang = 'Chưa giao' and UserID = $userIDOrd";
 							$loadSQL = load($sql);
 							$idDH = $loadSQL->fetch_object()->idDH;	
 
 
 							$sql= "select sum(c.SL*s.Gia) as TongGia
 									from chitietdh c,dathang d,sanpham s
-									where c.DatHangID = d.ID and d.ID = $idDH and d.TinhTrang='Chưa thanh toán' and c.SPID = s.ID
+									where c.DatHangID = d.ID and d.ID = $idDH and d.TinhTrang='Chưa giao' and c.SPID = s.ID
 									GROUP BY d.ID";
 							$load=load($sql);				
 							$tgTien = $load->fetch_object()->TongGia;				
 
-							$sql="update dathang set TongTien = $tgTien	where UserID = $userIDOrd and TinhTrang = 'Chưa thanh toán'";
+							$sql="update dathang set TongTien = $tgTien	where UserID = $userIDOrd and TinhTrang = 'Chưa giao'";
 							$load = load($sql);
-							$sql="select TongTien from dathang where UserID = $userIDOrd and TinhTrang = 'Chưa thanh toán'";
+							$sql="select TongTien from dathang where UserID = $userIDOrd and TinhTrang = 'Chưa giao'";
 							$load = load($sql);
 							$tongTien = $load->fetch_object()->TongTien;
 							echo $tongTien;
 						?>đ</div>
 						<div><hr></hr></div>
-						<div><button type="button" class="btn btn-primary" name="checkOut" style="width:100%;margin-top:5px;border-top:1px solid #bbb8b8;">Thanh toán</button></div>
+						<div><a href="checkout.php"><div class="btn btn-primary" name="checkOut" style="width:100%;margin-top:5px;border-top:1px solid #bbb8b8;">Thanh Toán</div></a></div>
 						</div>
 					<?php } 
 					}?>
