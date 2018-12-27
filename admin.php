@@ -5,6 +5,7 @@ if (!isset($_SESSION["loged"])) {
 }
 
 $flag = 1;
+$admin = "admin";
 $checkInfoLog = 1;
 if (isset($_POST["btnLogin"])) {
 	$username_ = $_POST["txtUserName_"];
@@ -14,7 +15,7 @@ if (isset($_POST["btnLogin"])) {
 		$checkInfoLog = 0;
 	}
 	else {
-		$sql = "select * from nguoidung where UserName = "admin""; //and userPwd = '$enc_password'";
+		$sql = "select * from nguoidung where UserName = '$admin'"; //and userPwd = '$enc_password'";
 		if ($rs->num_rows > 0) {
 			$data = $rs->fetch_object();
 			if ($username_ == $data->UserName && $password_ == $data->Pass) {
