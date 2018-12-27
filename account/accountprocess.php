@@ -79,25 +79,31 @@ if (isset($_POST["btnChangeProfile"])) {
 	$phoneCurrent = $_POST["txtUserPhoneCurrent"];
 	$addrCurrent = $_POST["txtUserAddrCurrent"];
 	$emailCurrent = $_POST["txtUserEmailCurrent"];
+	$passCurrent = $_POST["txtUserPassCurrent"];
 //	$passCurrent = $_POST["txtUserPassCurrent"];
 //	$newPass = $_POST["txtUserNewPass"];
-
+	if ($nameCurrent == "" || $phoneCurrent == "" || $addrCurrent == "" || $emailCurrent == "" || $passCurrent == "") {
+		echo '<script>alert("Bạn phải điền đủ thông tin đã!");</script>';
+	}
+	else {
 	$sql = "select * from nguoidung where UserName ='$nameCurrent'";
 	$rs = load($sql);
 	if ($rs->num_rows > 0) {
 		$data = $rs->fetch_object();
-		if ($nameCurrent == $data->UserName) {
-			if($nameCurrent == "" || $phoneCurrent == "" || $addrCurrent == "" ||$emailCurrent == "")
-			{}
-			else {
+		if ($passCurrent == $data->Pass) {
 				$sql = "update nguoidung set SDT = '$phoneCurrent', DiaChi = '$addrCurrent', Email = '$emailCurrent' where UserName = '$nameCurrent';";
 				$rs = load($sql);
+				echo '<script>alert("Thay đổi thông tin thành công");</script>';
+				echo "<meta http-equiv='refresh' content='0'>";
 			}
-		}
 		else {
+			echo '<script>alert("Mật khẩu không đúng!");</script>';
 		}
 	}
 	else {
 	}
 }
+}
 ?>
+
+

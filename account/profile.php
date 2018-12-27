@@ -1,3 +1,10 @@
+<?php 
+$ID = $_SESSION['current_user']->ID;
+$sql = "select * from nguoidung where ID = $ID";
+$load = load($sql);
+$data = $load->fetch_object()
+?>
+
 <section class="bg--white pt--80  pb--30">
 			<div class="container">
 				<div class="row mt--50">
@@ -14,79 +21,50 @@
 
 
 
-                        <div class="col-lg-6 col-12">
+                        <div class="col-lg-6 col-12" style="margin:0 auto;">
                             <div class="my__account__wrapper">
                                 <form method = "post" action="">
                                     <div class="account__form">
 
 
                                     <?php ?>
-
-                                        <center><img style="height:200px; width:auto; object-fit:scale-down; margin-bottom:10px; border: 2px; border-radius: 25px;" src="images/user/default-photo.jpg"/></center>
-
-                                        <center><button style="margin:auto; width:200px;" class="">Cập nhật ảnh đại diện</button></center>
-
                                         <div class="input__box">
                                             <label>Tên tài khoản</label>
-                                            <input type="text" id="txtUserNameCurrent" name="txtUserNameCurrent" value="<?php echo $_SESSION["current_user"]->UserName?>">
+                                            <input type="text" id="txtUserNameCurrent" name="txtUserNameCurrent" value="<?php echo $data->UserName?>" disabled>
                                         </div>
                                         <div class="input__box">
                                             <label>Số điện thoại</label>
-                                            <input type="number" id="txtUserPhoneCurrent" name="txtUserPhoneCurrent" value="<?php echo $_SESSION["current_user"]->SDT?>">
+                                            <input type="number" id="txtUserPhoneCurrent" name="txtUserPhoneCurrent" value="<?php echo $data->SDT?>">
                                         </div>
                                         <div class="input__box">
                                             <label>Địa chỉ</label>
-                                            <input type="text" id="txtUserAddrCurrent" name="txtUserAddrCurrent" value="<?php echo $_SESSION["current_user"]->DiaChi?>">
+                                            <input type="text" id="txtUserAddrCurrent" name="txtUserAddrCurrent" value="<?php echo $data->DiaChi?>">
                                         </div>
                                         <div class="input__box">
                                             <label>Email</label>
-                                            <input type="email" id="txtUserEmailCurrent" name="txtUserEmailCurrent" value="<?php echo $_SESSION["current_user"]->Email?>">
+                                            <input type="email" id="txtUserEmailCurrent" name="txtUserEmailCurrent" value="<?php echo $data->Email?>">
                                         </div>
-                                        <div class="form__btn">
-                                        <button type="submit" name="btnChangeProfile" class="btn btn-danger" style="width:200px;">Xác nhận thay đổi</button>
-                                    </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="col-lg-6 col-12">
-                            <div class="my__account__wrapper">
-                                <form method = "post" action="">
-                                    <div class="account__form">
-
-                                    
-                                        <?php ?>
-
-
-
-
                                         <div class="input__box">
-                                            <label>Mật khẩu cũ</label>
+                                            <label>Mật khẩu</label>
                                             <input type="password" id="txtUserPassCurrent" name="txtUserPassCurrent">
                                         </div>
 
-                                        <div class="input__box">
-                                        <label>Mật khẩu mới</label>
-                                        <input type="password" id="txtNewPass" name="txtUserNewPass">
-                                        </div>
-                                       
-                                        <div class="input__box">
-                                        <label>Nhập lại mật khẩu</label>
-                                        <input type="password" id="txtReEnPass" name="txtUserReEnPass">
                                     </div>
-                                    </div>
+                                    <center>
                                     <label>Bạn đồng ý thay đổi thông tin?</labe>
                                     <div class="form__btn">
-                                        <button type="submit" name="" class="btn btn-danger" style="width:200px;">Xác nhận thay đổi</button>
+                                        <button type="submit" name="btnChangeProfile" class="btn btn-danger" style="width:200px;">Xác nhận thay đổi</button>
                                     </div>
+                                    </center>
                                 </form>
                             </div>
                         </div>
+
+
+
+
+
+                        
 
 
 
@@ -119,7 +97,7 @@
 											<td><?php echo $data->NgayTao; ?></td>
                                             <td><?php echo $data->TongTien; ?></td>
                                             <td><?php echo $data->TinhTrang; ?></td>
-                                            <td><a href="#" onclick="PopupCenterDual('index.php','NIGRAPHIC','450','450'); ">Click</a></td>
+                                            <td><a href="#" onclick="PopupCenterDual('hoadon.php?id=<?php echo $data->ID; ?>','NIGRAPHIC','1000','600'); ">Click</a></td>
 										</tr>
 									<?php } ?>
                                     </tbody>

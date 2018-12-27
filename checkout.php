@@ -96,7 +96,7 @@ if(isset($_POST['addDiaChi'])) {
         					</ul>
         					<ul class="order_product">
 							<?php
-								$sqlProsInCart = "select s.TenSP as TenSanPham,c.SL*s.Gia as TongGia,c.SL as SoLuong, s.Gia as giaSP, c.SPID as idSP from chitietdh c, dathang d, sanpham s where d.ID = c.DatHangID and d.UserID = $userIDOrd and s.ID = c.SPID";
+								$sqlProsInCart = "select s.TenSP as TenSanPham,c.SL*s.Gia as TongGia,c.SL as SoLuong, s.Gia as giaSP, c.SPID as idSP from chitietdh c, dathang d, sanpham s where d.ID = c.DatHangID and d.UserID = $userIDOrd and s.ID = c.SPID and d.TinhTrang = 'Chưa giao'";
 								$loadProsInCart = load($sqlProsInCart);
 								while($dataProsInCart = $loadProsInCart->fetch_object()) {
 							?>

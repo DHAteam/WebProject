@@ -12,6 +12,28 @@ else if ($current_file == "cart.php")
 	$current_title = "Giỏ hàng";
 else if ($current_file == "checkout.php")
 	$current_title = "Thanh toán";
+else if ($current_file == "allloai.php")
+	$current_title = "Tất cả sản phẩm";
+else if ($current_file == "allnsx.php")
+	$current_title = "Tất cả sản phẩm";
+else if ($current_file == "tatca.php")
+	$current_title = "Tất cả sản phẩm";
+else if ($current_file == "cacdanhmuc.php") {
+	if (isset($_GET['ID'])) {
+		$ID = intval($_GET['ID']); 
+		$sql="select * from danhmuc where ID = $ID";
+		$load = load($sql);
+		$current_title = $load->fetch_object()->TenDM;
+	}
+}
+else if ($current_file == "cacnsx.php") {
+	if (isset($_GET['ID'])) {
+		$ID = intval($_GET['ID']);
+		$sql="select * from nsx where ID = $ID";
+		$load = load($sql);
+		$current_title = $load->fetch_object()->TenNSX;
+	}
+}
 
 $sqlDanhMuc = "select * from danhmuc";
 $rsDanhMuc = load($sqlDanhMuc);
@@ -106,26 +128,26 @@ else {
 
 
 								<li class="drop with--one--item"><a href="index.php">Home</a></li>
-								<li class="drop"><a href="shop-grid.php">Danh Mục</a>
+								<li class="drop"><a href="allloai.php">Danh Mục</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
 											<li class="title">Loại sản phẩm </li>
 											<?php 
 												while($dataDanhMuc = $rsDanhMuc->fetch_object()) {
 											?>
-											<li><a href="product.php?danhmuc=<?php echo $dataDanhMuc->ID ?>"><?php echo $dataDanhMuc->TenDM ?></a></li>
+											<li><a href="cacdanhmuc.php?ID=<?php echo $dataDanhMuc->ID ?>"><?php echo $dataDanhMuc->TenDM ?></a></li>
 											<?php } ?>
 										</ul>
 									</div>
 								</li>
-								<li class="drop"><a href="shop-grid.php">Nhà sản xuất</a>
+								<li class="drop"><a href="allnsx.php">Nhà sản xuất</a>
 									<div class="megamenu mega02">
 										<ul class="item item02">
 											<li class="title">Top các nhà sản xuất </li>
 											<?php 
 												while($dataNSX = $rsNSX->fetch_object()) {
 											?>
-											<li><a href="product.php?nsx=<?php echo $dataNSX->ID ?>"><?php echo $dataNSX->TenNSX ?></a></li>
+											<li><a href="cacnsx.php?ID=<?php echo $dataNSX->ID ?>"><?php echo $dataNSX->TenNSX ?></a></li>
 											<?php } ?>
 										</ul>
 										
@@ -134,7 +156,7 @@ else {
 								<li class="drop"><a href="dichvu.php">Dịch vụ</a>
 									
 								</li>
-								<li><a href="product.php">Tất cả sản phẩm</a></li>
+								<li><a href="tatca.php">Tất cả sản phẩm</a></li>
 
 
 							</ul>
@@ -340,6 +362,58 @@ else {
 			</div>
 </div>
 </div>
+
+
+<?php
+	if ($current_file == "index.php") {
+?>
+
+<!-- Start Slider area -->
+<div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
+<!-- Start Single Slide -->
+<div class="slide animation__style10 bg-image--1 fullscreen align__center--left">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="slider__content">
+					<div class="contentbox">
+						<h2>Buy <span>your </span></h2>
+						<h2>favourite <span>Product </span></h2>
+						<h2>from <span>NynnPet </span></h2>
+						<a class="shopbtn" href="#">shop now</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Single Slide -->
+<!-- Start Single Slide -->
+<div class="slide animation__style10 bg-image--7 fullscreen align__center--left">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="slider__content">
+					<div class="contentbox">
+						<h2>Buy <span>your </span></h2>
+						<h2>favourite <span>Product </span></h2>
+						<h2>from <span>Here </span></h2>
+						<a class="shopbtn" href="#">shop now</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Single Slide -->
+</div>
+<!-- End Slider area -->
+
+<?php }
+	else {
+?>
+
+
 <!-- End Search Popup -->
 <!-- Start Bradcaump area -->
 <div class="ht__bradcaump__area bg-image-header">
@@ -354,3 +428,5 @@ else {
             </div>
         </div>
 <!-- End Bradcaump area -->
+<?php }
+?>

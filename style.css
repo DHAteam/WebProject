@@ -111,7 +111,6 @@ textarea {
   font-family: "Source Sans Pro", Helvetica, sans-serif; }
 
 body {
-  background-color: #ff56aa;
   color: #141412;
   line-height: 1.5;
   margin: 0; }
@@ -413,7 +412,6 @@ html {
   overflow-x: hidden; }
 
 body {
-  overflow-x: hidden;
   font-size: 18px;
   line-height: 24px;
   -webkit-font-smoothing: antialiased;
@@ -819,7 +817,7 @@ a {
 
 /* Height and width */
 .fullscreen {
-  min-height: 85vh;
+  min-height: 100vh;
   width: 100%; }
 .w--100 {
   width: 100%; }
@@ -937,7 +935,7 @@ a {
   width: 100%;
   z-index: 1; }
 [data-overlay]:before {
-  background-color: #e59285; }
+  background-color: #e585b2; }
 [data-black-overlay]:before {
   background-color: #000000; }
 [data-overlay="1"]:before, [data-black-overlay="1"]:before {
@@ -3968,6 +3966,7 @@ h3.widget-title-modal {
   Breadcaump Styles
 ----------------------------*/
 .ht__bradcaump__area {
+  background: #999999;
   padding-bottom: 110px;
   padding-top: 220px;
 }
