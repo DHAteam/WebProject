@@ -119,5 +119,3 @@ if (isset($_POST["btnChangeProfile"])) {
 }
 }
 ?>
-
-
