@@ -48,7 +48,6 @@
            }
             }
             ?>
-      <?php endif; ?>
     </div>
     <?php include"footerad.php" ?>
 <?php endif; ?>

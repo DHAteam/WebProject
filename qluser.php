@@ -65,7 +65,6 @@
            }
            }
           ?>
-        <?php endif; ?>
       </table>
       <form method="POST">
     <div class="form-group">

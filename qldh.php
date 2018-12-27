@@ -62,7 +62,6 @@
            }
            }
           ?>
-        <?php endif; ?>
       </table>
     </div>
     <?php include"footerad.php" ?>

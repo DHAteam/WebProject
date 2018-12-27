@@ -66,12 +66,10 @@
            }
            }
           ?>
-        <?php endif; ?>
         <?php
            }
            }
           ?>
-        <?php endif; ?>
       </table>
     </div>
     </div>
