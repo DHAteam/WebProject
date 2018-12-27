@@ -3033,7 +3033,9 @@ h3.widget-title-modal {
   align-items: center;
   display: flex; }
 .slider__content {
-  margin-top: 60px;
+padding-left: 954px;
+padding-top: 136px;
+  margin-top: -22px;
 }
 .contentbox > h3 {
   color: #0dc1c1;
