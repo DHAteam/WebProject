@@ -16,6 +16,7 @@ if (isset($_POST["btnLogin"])) {
 	}
 	else {
 		$sql = "select * from nguoidung where UserName = '$admin'"; //and userPwd = '$enc_password'";
+    $rs = load($sql);
 		if ($rs->num_rows > 0) {
 			$data = $rs->fetch_object();
 			if ($username_ == $data->UserName && $password_ == $data->Pass) {
@@ -50,7 +51,7 @@ if (isset($_POST["btnLogin"])) {
 
 								<div class="input__box">
 									<label>Tên tài khoản<span>*</span></label>
-									<input type="text" id="txtUserName_" name="txtUserName_" placeholder="admin">
+									<input type="text" id="txtUserName_" name="txtUserName_" placeholder="Nhập Tài Khoản Admin">
 								</div>
 									<div class="input__box">
 										<label>Mật khẩu<span>*</span></label>
