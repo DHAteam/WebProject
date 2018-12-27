@@ -359,13 +359,13 @@ $rs = load($top10LastPros);
         </div>
         <!-- End Slider area -->
 		<!-- Start BEst Seller Area -->
-		<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #ff4060;background-image: url('images/bg/lined-paper.png');">
-			<div class="container" style = "background:white; padding-top:20px;padding-left:50px; border:1px solid pink; border-radius: 20px;">
+		<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #ff4060;background-image: url('images/bg/3.gif');">
+			<div class="container" style = "background:	#E0FFFF; padding-top:20px;padding-left:50px; border:1px solid pink; border-radius: 20px;">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="section__title text-center">
-							<h2 class="title__be--2">Sản phẩm <span class="color--theme">Mới nhất</span></h2>
-							<p>Dưới đây là các mặt hàng mới nhất của shop có xuất xứ rõ ràng và đảm bảo chất lượng an toàn cho thú cưng của bạn </p>
+							<h2 class="title__be--2">Sản phẩm mới nhất </span></h2>
+							<p style="font-size: 19px" > Mặt hàng mới nhất của shop có xuất xứ rõ ràng và đảm bảo chất lượng an toàn cho thú cưng của bạn </p>
 					</div>
 				</div>
 				<!-- Start Single Tab Content -->
@@ -433,13 +433,13 @@ $rs = load($top10LastPros);
 			</div>
 		</section>
 		
-		<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #ff4060;background-image: url('images/bg/lined-paper.png');">
-			<div class="container" style = "background:white; padding-top:20px;padding-left:50px; border:1px solid pink; border-radius: 20px;">
+		<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #ff4060;background-image: url('images/bg/3.gif');">
+			<div class="container" style = "background:#E0FFFF; padding-top:20px;padding-left:50px; border:1px solid pink; border-radius: 20px;">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="section__title text-center">
-							<h2 class="title__be--2">Sản phẩm <span class="color--theme">Bán chạy nhất</span></h2>
-							<p>Dưới đây là các mặt hàng bán chạy nhất của shop trong thời gian gần đây  </p>
+							<h2 class="title__be--2">Sản phẩm bán chạy nhất</span></h2>
+							<p style="font-size: 19px">Dưới đây là các mặt hàng bán chạy nhất của shop trong thời gian gần đây  </p>
 					</div>
 				</div>
 				<!-- Start Single Tab Content -->
@@ -502,13 +502,13 @@ $rs = load($top10LastPros);
 		</section>
 
 
-				<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #ff4060;background-image: url('images/bg/lined-paper.png');">
-			<div class="container" style = "background:white; padding-top:20px;padding-left:50px; border:1px solid pink; border-radius: 20px;">
+				<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #ff4060;background-image: url('images/bg/3.gif');">
+			<div class="container" style = "background:#E0FFFF; padding-top:20px;padding-left:50px; border:1px solid pink; border-radius: 20px;">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="section__title text-center">
-							<h2 class="title__be--2">Sản phẩm <span class="color--theme">Xem nhiều nhất</span></h2>
-							<p>Dưới đây là các mặt hàng được quan tâm nhiều nahát trong thời gian qua  </p>
+							<h2 class="title__be--2">Sản phẩmXem nhiều nhất</span></h2>
+							<p style="font-size: 19px">Sản phẩm được quan tâm nhiều nhất trong thời gian qua  </p>
 					</div>
 				</div>
 				<!-- Start Single Tab Content -->
