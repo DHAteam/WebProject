@@ -414,43 +414,34 @@ if(isset($_GET["ID"]))
         				<div class="shop__sidebar">
         					
         				
-        					<aside class="wedget__categories poroduct--tag">
-        						<h3 class="wedget__title">Product Tags</h3>
-        						<ul class="meninmenu d-flex justify-content-start">
-							
-								<li class="drop with--one--item"><a href="tatca.php">Tất cả sản phẩm </a></li>
-								<li class="drop"><a href="tatca.php">Danh Mục sản phẩm </a>
-									<div class="megamenu mega03">
-										<ul class="item item03">
-											<li class="title">Loại sản phẩm </li>
-
-
-											<li><a href="cacdanhmuc.php?ID=1">Lồng-Nệm-Nhà </a></li> 
+        				
+        							<aside class="wedget__categories poroduct--cat">
+        						<a href=" allloai.php" ><h3 class="wedget__title">Danh mục sản phẩm</h3></a>
+        						<ul>
+        							<li><a href="cacdanhmuc.php?ID=1">Lồng-Nệm-Nhà </a></li> 
 											<li><a href="cacdanhmuc.php?ID=2">Quần Áo </a></li>
 											<li><a href="cacdanhmuc.php?ID=3">Phụ kiện </a></li>
 											<li><a href="cacdanhmuc.php?ID=4">Ba lô vận chuyển </a></li>
 											<li><a href="cacdanhmuc.php?ID=5">Dụng cụ ăn uống vệ sinh </a></li>
-										</ul>
-
-									</div>
-								</li>
-								<li class="drop"><a href="tatca.php">Nhà sản xuất</a>
-									<div class="megamenu mega02">
-										<ul class="item item02">
-											<li class="title">Top các nhà sản xuất </li>
-											<li><a href="cacnsx.php?ID1">Cty TNHH DuyCho</a></li>
-											<li><a href="cacnsx.php?ID2">Shop of Pet</a></li>
-											<li><a href="cacnsx.php?ID3">HienNynn Shop</a></li>
-											<li><a href="cacnsx.php?ID4">Hna Shop</a></li>
-											<li><a href="cacnsx.php?ID5">May Mặc Shop</a></li>
-										</ul>
-										
-									</div>
-								</li>
-					
-								
-							</ul>
+        						</ul>
         					</aside>
+        					<aside class="wedget__categories poroduct--cat">
+        						<a href=" allnsx.php" ><h3 class="wedget__title">Nhà sản xuất</h3></a>
+        						<ul>
+        							       <li><a href="cacnsx.php?ID=1">Cty TNHH DuyCho </a></li> 
+											<li><a href="cacnsx.php?ID=2">Shop of Pet </a></li>
+											<li><a href="cacnsx.php?ID=3">HienNynn Shop </a></li>
+											<li><a href="cacnsx.php?ID=4">Hna Shop </a></li>
+											<li><a href="cacnsx.php?ID=5">May Mặc Shop </a></li>
+        						</ul>
+        					</aside>
+        					<aside class="wedget__categories poroduct--cat">
+        						<a href=" tatca.php"> <h3 class="wedget__title">Xem tất cả sản phẩm </h3></a>
+        						
+        					</aside>
+        					
+        					
+
         					
 
         				</div>
@@ -464,17 +455,7 @@ if(isset($_GET["ID"]))
 			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
 			                        </div>
 			                        <p>Showing 1–12 of 40 results</p>
-			                        <div class="orderby__wrapper">
-			                        	<span>Sort By</span>
-			                        	<select class="shot__byselect">
-			                        		<option>Default sorting</option>
-			                        		<option>HeadPhone</option>
-			                        		<option>Furniture</option>
-			                        		<option>Jewellery</option>
-			                        		<option>Handmade</option>
-			                        		<option>Kids</option>
-			                        	</select>
-			                        </div>
+			                        
 		                        </div>
         					</div>
         				</div>
@@ -562,7 +543,7 @@ $rsTagPro = load($sqlTagPro);
 			?>
 		
 		
-			 <li class="active"> <?php echo "<a href='cacdanhmuc.php?page=".$page."'>".$page."</a>"; ?></li>
+				 <li class="active"> <?php echo "<a href='cacdanhmuc.php?ID=".$maLoai."&page=".$page."'>".$page."</a>"; ?></li>
 
 			
 		

@@ -237,6 +237,7 @@ $rs = load($top10LastPros);
 															<ul class="d-flex justify-content-end">
 																<li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
 																<li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
+																<p> </p>
 															</ul>
 														</div>
 													</div>
@@ -279,6 +280,7 @@ $rs = load($top10LastPros);
 														<li>English03</li>
 														<li>English04</li>
 														<li>English05</li>
+														
 													</ul>
 												</div>
 											</div>
@@ -410,71 +412,37 @@ $rs = load($top10LastPros);
         				<div class="shop__sidebar">
         					
         				
-        					<aside class="wedget__categories poroduct--tag">
-        						<h3 class="wedget__title">Product Tags</h3>
-        						<ul class="meninmenu d-flex justify-content-start">
-							
-								<li class="drop with--one--item"><a href="tatca.php">Tất cả sản phẩm </a></li>
-								<li class="drop"><a href="tatca.php">Danh Mục sản phẩm </a>
-									<div class="megamenu mega03">
-										<ul class="item item03">
-											<li class="title">Loại sản phẩm </li>
-										
-
-
-											<li><a href="cacdanhmuc.php?ID=1">Lồng-Nệm-Nhà </a></li> 
+        							<aside class="wedget__categories poroduct--cat">
+        						<a href=" allloai.php" ><h3 class="wedget__title">Danh mục sản phẩm</h3></a>
+        						<ul>
+        							<li><a href="cacdanhmuc.php?ID=1">Lồng-Nệm-Nhà </a></li> 
 											<li><a href="cacdanhmuc.php?ID=2">Quần Áo </a></li>
 											<li><a href="cacdanhmuc.php?ID=3">Phụ kiện </a></li>
 											<li><a href="cacdanhmuc.php?ID=4">Ba lô vận chuyển </a></li>
 											<li><a href="cacdanhmuc.php?ID=5">Dụng cụ ăn uống vệ sinh </a></li>
-										</ul>
-
-									</div>
-								</li>
-								<li class="drop"><a href="tatca.php">Nhà sản xuất</a>
-									<div class="megamenu mega02">
-										<ul class="item item02">
-											<li class="title">Top các nhà sản xuất </li>
-											<li><a href="cacnsx.php?ID=1">Cty TNHH DuyCho</a></li>
-											<li><a href="cacnsx.php?ID=2">Shop of Pet</a></li>
-											<li><a href="cacnsx.php?ID=3">HienNynn Shop</a></li>
-											<li><a href="cacnsx.php?ID=4">Hna Shop</a></li>
-											<li><a href="cacnsx.php?ID=5">May Mặc Shop</a></li>
-										</ul>
-										
-									</div>
-								</li>
-					
-								
-							</ul>
+        						</ul>
         					</aside>
+        					<aside class="wedget__categories poroduct--cat">
+        						<a href=" allnsx.php" ><h3 class="wedget__title">Nhà sản xuất</h3></a>
+        						<ul>
+        							       <li><a href="cacnsx.php?ID=1">Cty TNHH DuyCho </a></li> 
+											<li><a href="cacnsx.php?ID=2">Shop of Pet </a></li>
+											<li><a href="cacnsx.php?ID=3">HienNynn Shop </a></li>
+											<li><a href="cacnsx.php?ID=4">Hna Shop </a></li>
+											<li><a href="cacnsx.php?ID=5">May Mặc Shop </a></li>
+        						</ul>
+        					</aside>
+        					<aside class="wedget__categories poroduct--cat">
+        						<a href=" tatca.php"> <h3 class="wedget__title">Xem tất cả sản phẩm </h3></a>
+        						
+        					</aside>
+        					
         					
 
         				</div>
         			</div>
         			<div class="col-lg-9 col-12 order-1 order-lg-2">
-        				<div class="row">
-        					<div class="col-lg-12">
-								<div class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap justify-content-between">
-									<div class="shop__list nav justify-content-center" role="tablist">
-			                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid" role="tab"><i class="fa fa-th"></i></a>
-			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
-			                        </div>
-			                        <p>Showing 1–12 of 40 results</p>
-			                        <div class="orderby__wrapper">
-			                        	<span>Sort By</span>
-			                        	<select class="shot__byselect">
-			                        		<option>Default sorting</option>
-			                        		<option>HeadPhone</option>
-			                        		<option>Furniture</option>
-			                        		<option>Jewellery</option>
-			                        		<option>Handmade</option>
-			                        		<option>Kids</option>
-			                        	</select>
-			                        </div>
-		                        </div>
-        					</div>
-        				</div>
+        				
         				<div class="tab__container">
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">
@@ -628,86 +596,7 @@ $rs = load($top10LastPros);
 		</footer>
 		<!-- //Footer Area -->
 		<!-- QUICKVIEW PRODUCT -->
-		<div id="quickview-wrapper">
-		    <!-- Modal -->
-		    <div class="modal fade" id="productmodal" tabindex="-1" role="dialog">
-		        <div class="modal-dialog modal__container" role="document">
-		            <div class="modal-content">
-		                <div class="modal-header modal__header">
-		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		                </div>
-		                <div class="modal-body">
-		                    <div class="modal-product">
-		                        <!-- Start product images -->
-		                        <div class="product-images">
-		                            <div class="main-image images">
-		                                <img alt="big images" src="images/product/big-img/1.jpg">
-		                            </div>
-		                        </div>
-		                        <!-- end product images -->
-		                        <div class="product-info">
-		                            <h1>Simple Fabric Bags</h1>
-		                            <div class="rating__and__review">
-		                                <ul class="rating">
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                    <li><span class="ti-star"></span></li>
-		                                </ul>
-		                                <div class="review">
-		                                    <a href="#">4 customer reviews</a>
-		                                </div>
-		                            </div>
-		                            <div class="price-box-3">
-		                                <div class="s-price-box">
-		                                    <span class="new-price">$17.20</span>
-		                                    <span class="old-price">$45.00</span>
-		                                </div>
-		                            </div>
-		                            <div class="quick-desc">
-		                                Designed for simplicity and made from high quality materials. Its sleek geometry and material combinations creates a modern look.
-		                            </div>
-		                            <div class="select__color">
-		                                <h2>Select color</h2>
-		                                <ul class="color__list">
-		                                    <li class="red"><a title="Red" href="#">Red</a></li>
-		                                    <li class="gold"><a title="Gold" href="#">Gold</a></li>
-		                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-		                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-		                                </ul>
-		                            </div>
-		                            <div class="select__size">
-		                                <h2>Select size</h2>
-		                                <ul class="color__list">
-		                                    <li class="l__size"><a title="L" href="#">L</a></li>
-		                                    <li class="m__size"><a title="M" href="#">M</a></li>
-		                                    <li class="s__size"><a title="S" href="#">S</a></li>
-		                                    <li class="xl__size"><a title="XL" href="#">XL</a></li>
-		                                    <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-		                                </ul>
-		                            </div>
-		                            <div class="social-sharing">
-		                                <div class="widget widget_socialsharing_widget">
-		                                    <h3 class="widget-title-modal">Share this product</h3>
-		                                    <ul class="social__net social__net--2 d-flex justify-content-start">
-		                                        <li class="facebook"><a href="#" class="rss social-icon"><i class="zmdi zmdi-rss"></i></a></li>
-		                                        <li class="linkedin"><a href="#" class="linkedin social-icon"><i class="zmdi zmdi-linkedin"></i></a></li>
-		                                        <li class="pinterest"><a href="#" class="pinterest social-icon"><i class="zmdi zmdi-pinterest"></i></a></li>
-		                                        <li class="tumblr"><a href="#" class="tumblr social-icon"><i class="zmdi zmdi-tumblr"></i></a></li>
-		                                    </ul>
-		                                </div>
-		                            </div>
-		                            <div class="addtocart-btn">
-		                                <a href="#">Add to cart</a>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
-		</div>
+
 		<!-- END QUICKVIEW PRODUCT -->
 		</div>
 		<!-- //Main wrapper -->
