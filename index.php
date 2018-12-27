@@ -359,7 +359,7 @@ $rs = load($top10LastPros);
         </div>
         <!-- End Slider area -->
 		<!-- Start BEst Seller Area -->
-		<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #ff4060;background-image: url('images/bg/3.gif');">
+		<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #55acee;background-image: url('images/bg/3.gif');">
 			<div class="container" style = "background:	#E0FFFF; padding-top:20px;padding-left:50px; border:1px solid pink; border-radius: 20px;">
 				<div class="row">
 					<div class="col-lg-12">
@@ -433,7 +433,7 @@ $rs = load($top10LastPros);
 			</div>
 		</section>
 		
-		<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #ff4060;background-image: url('images/bg/3.gif');">
+		<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #55acee;background-image: url('images/bg/3.gif');">
 			<div class="container" style = "background:#E0FFFF; padding-top:20px;padding-left:50px; border:1px solid pink; border-radius: 20px;">
 				<div class="row">
 					<div class="col-lg-12">
@@ -502,7 +502,7 @@ $rs = load($top10LastPros);
 		</section>
 
 
-				<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #ff4060;background-image: url('images/bg/3.gif');">
+				<section class="wn__product__area brown--color pt--80  pb--30"  style = "background-color: #55acee;background-image: url('images/bg/3.gif');">
 			<div class="container" style = "background:#E0FFFF; padding-top:20px;padding-left:50px; border:1px solid pink; border-radius: 20px;">
 				<div class="row">
 					<div class="col-lg-12">

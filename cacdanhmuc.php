@@ -407,7 +407,7 @@ if(isset($_GET["ID"]))
         </div>
         <!-- End Bradcaump area -->
         <!-- Start Shop Page -->
-        <div class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
+        <div class="page-shop-sidebar left--sidebar bg--white section-padding--lg"style="background-color: #E0FFFF;">
         	<div class="container">
         		<div class="row">
         			<div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
@@ -447,18 +447,7 @@ if(isset($_GET["ID"]))
         				</div>
         			</div>
         			<div class="col-lg-9 col-12 order-1 order-lg-2">
-        				<div class="row">
-        					<div class="col-lg-12">
-								<div class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap justify-content-between">
-									<div class="shop__list nav justify-content-center" role="tablist">
-			                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid" role="tab"><i class="fa fa-th"></i></a>
-			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
-			                        </div>
-			                        <p>Showing 1–12 of 40 results</p>
-			                        
-		                        </div>
-        					</div>
-        				</div>
+        				
         				<div class="tab__container">
 	        				<div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
 	        					<div class="row">

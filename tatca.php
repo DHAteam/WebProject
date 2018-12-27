@@ -47,7 +47,7 @@ $rs = load($top10LastPros);
 
 ?>
      
-	<div class="wrapper" id="wrapper">
+	<div class="wrapper" id="wrapper" ">
 		
 		<!-- Header -->
 		<header id="wn__header" class="oth-page header__area header__absolute sticky__header">
@@ -405,11 +405,11 @@ $rs = load($top10LastPros);
         </div>
         <!-- End Bradcaump area -->
         <!-- Start Shop Page -->
-        <div class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
+        <div class="page-shop-sidebar left--sidebar bg--white section-padding--lg"  style="background-color: #E0FFFF;">
         	<div class="container">
         		<div class="row">
         			<div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
-        				<div class="shop__sidebar">
+        				<div class="shop__sidebar" >
         					
         				
         							<aside class="wedget__categories poroduct--cat">
