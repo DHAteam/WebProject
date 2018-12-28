@@ -107,7 +107,7 @@ if (isset($_POST['addToCart'])) {
 ?>
 
 
-        <div class="maincontent bg--white pt--80 pb--55" style="background-color: #E0FFFF;">
+        <div class="maincontent bg--white pt--80 pb--55" style="background-color: white;">
         	<div class="container">
         		<div class="row">
         			<div class="col-lg-11 col-12" style="margin:auto">
@@ -175,7 +175,7 @@ if (isset($_POST['addToCart'])) {
 	                        	<!-- End Single Tab Content -->
 	                        </div>
         				</div></div>
-						<div class="wn__related__product pt--80 pb--50" style = "width:70%; margin:auto; background-color: #E0FFFF;">
+						<div class="wn__related__product pt--80 pb--50" style = "width:70%; margin:auto; background-color: white;">
 							<div class="section__title text-center" style="border-bottom: 3px solid #ebebeb;">
 								<h2 class="title__be--2">Sản phẩm cùng loại</h2>
 							</div>
@@ -225,7 +225,7 @@ if (isset($_POST['addToCart'])) {
 								</div>
 							</div>
 						</div>
-						<div class="wn__related__product" style = "width:70%; margin:auto;  background-color: #E0FFFF;">
+						<div class="wn__related__product" style = "width:70%; margin:auto;  background-color: white;">
 							<div class="section__title text-center" style="border-bottom: 3px solid #ebebeb;">
 								<h2 class="title__be--2">Sản phẩm cùng NSX</h2>
 							</div>
