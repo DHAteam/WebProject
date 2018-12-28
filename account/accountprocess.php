@@ -41,7 +41,6 @@ if (isset($_POST["btnReg"])) {
 
 
 $flag = 1;
-$admin="admin";
 if (isset($_POST["btnLogin"])) {
 	$username_ = $_POST["txtUserName_"];
 	$password_ = $_POST["txtUserPass_"];
@@ -51,19 +50,6 @@ if (isset($_POST["btnLogin"])) {
 	}
 	else {
 		$sql = "select * from nguoidung where UserName = '$username_'"; //and userPwd = '$enc_password'";
-    $sql2 = "select * from nguoidung where UserName = '$admin'"; //and userPwd = '$enc_password'";
-    if($username_==$admin)
-    {
-    $rs2 = load($sql2);
-    if ($rs2->num_rows > 0) {
-			$data2 = $rs2->fetch_object();
-			if ($username_ == $data2->UserName && $password_ == $data2->Pass) {
-				$_SESSION["current_user"] = $data2;
-				$_SESSION["loged"] = 1;
-				header("Location:indexad.php");
-			}
-    }
-    else{
 		$rs = load($sql);
 		if ($rs->num_rows > 0) {
 			$data = $rs->fetch_object();
@@ -75,11 +61,11 @@ if (isset($_POST["btnLogin"])) {
 			else {
 				$flag = 0;
 			}
-      }
+		}
 		else {
 			$flag = 0;
 		}
-    }
+	}
 }
 
 
@@ -119,3 +105,5 @@ if (isset($_POST["btnChangeProfile"])) {
 }
 }
 ?>
+
+

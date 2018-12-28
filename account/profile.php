@@ -30,7 +30,7 @@ $data = $load->fetch_object()
                                     <?php ?>
                                         <div class="input__box">
                                             <label>Tên tài khoản</label>
-                                            <input type="text" id="txtUserNameCurrent" name="txtUserNameCurrent" value="<?php echo $data->UserName?>" disabled>
+                                            <input type="text" id="txtUserNameCurrent" name="txtUserNameCurrent" value="<?php echo $data->UserName?>" readonly="readonly">
                                         </div>
                                         <div class="input__box">
                                             <label>Số điện thoại</label>

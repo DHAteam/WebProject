@@ -189,9 +189,6 @@ else {
 											?>
 
 												<div class="item01 d-flex mt--20">
-													<div class="thumb">
-														<a href="product-details.php"><img src="images/product/sm-img/2.jpg" alt="product images"></a>
-													</div>
 													<div class="content">
 														<h6><a href="product-details.php"><?php echo $dataProsInCart->TenSanPham; ?></a></h6>
 														<span class="prize"><?php echo $dataProsInCart->GiaSP; ?></span>

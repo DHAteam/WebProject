@@ -22,10 +22,17 @@ if(isset($_POST['addDiaChi'])) {
 		echo '<script>alert("Bạn phải điền đủ thông tin đã!");</script>';
 	}
 	else {
+	$sqlProsInCart = "select s.TenSP as TenSanPham,c.SL*s.Gia as TongGia,c.SL as SoLuong, s.Gia as giaSP, c.SPID as idSP from chitietdh c, dathang d, sanpham s where d.ID = c.DatHangID and d.UserID = $userIDOrd and s.ID = c.SPID and d.TinhTrang = 'Chưa giao'";
+	$loadProsInCart = load($sqlProsInCart);
+	$data = $loadProsInCart->fetch_object();
+	$sql = "update sanpham set SoLuong = (SoLuong - 1) where ID = $data->idSP";
+	$load=load($sql);
 	$sql="insert diachinhan (UserID,TenNguoiNhan,SDT,DiaChiGiao) values ($userIDOrd,'$tenNN','$SDT','$diaChiGiao')";
 	$load = load($sql);
 	$sql = "update dathang set TinhTrang = 'Đang giao' where UserID = $userIDOrd and TinhTrang = 'Chưa giao'";
 	$load = load($sql);
+	//$sql = "update sanpham set SoLuong = SoLuong - 1 where UserID = $userIDOrd and TinhTrang = 'Chưa giao'";
+	//	$load = load($sql);
 	echo '<script>alert("Yêu cầu của bạn đã được xác nhận!");window.location.href = "index.php";</script>';
 	}
 }

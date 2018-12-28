@@ -193,9 +193,6 @@ if (isset($_POST['addToCart'])) {
 										<div class="product__thumb">
 											<a class="first__img" href="product_detail.php?id=<?php echo $dataRelatePro->ID; ?>"><img src="<?php echo $dataRelatePro->HinhAnh; ?>" alt="product image"></a>
 											<input type="hidden" name="idSP" value = "<?php echo $dataRelatePro->ID; ?>">
-											<div class="hot__box">
-												<span class="hot-label">Hot</span>
-											</div>
 										</div>
 										<div class="product__content content--center">
 											<h4><a href="product_detail.php?id=<?php echo $dataRelatePro->ID; ?>"><?php echo $dataRelatePro->TenSP; ?></a></h4>
@@ -243,9 +240,6 @@ if (isset($_POST['addToCart'])) {
 										<div class="product__thumb">
 											<a class="first__img" href="product_detail.php?id=<?php echo $dataRelateNSX->ID; ?>"><img src="<?php echo $dataRelateNSX->HinhAnh; ?>" alt="product image"></a>
 											<input type="hidden" name="idSP" value = "<?php echo $dataRelateNSX->ID; ?>">
-											<div class="hot__box">
-												<span class="hot-label">Hot</span>
-											</div>
 										</div>
 										<div class="product__content content--center">
 											<h4><a href="product_detail.php?id=<?php echo $dataRelateNSX->ID; ?>"><?php echo $dataRelateNSX->TenSP; ?></a></h4>

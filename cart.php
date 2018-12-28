@@ -24,7 +24,7 @@ if (isset($_GET['action']) && $_GET['action']=="remove") {
 	$sql="update dathang set TongTien = $tgTien	where UserID = $userIDOrd and TinhTrang = 'Chưa giao'";
 	$load = load($sql);
 
-
+	echo '<script>alert("Xóa thành công");</script>';
 	
 	$return_url = basename($_SERVER['PHP_SELF']); 
 	header('Location:'.$return_url);
@@ -66,7 +66,6 @@ if (isset($_POST['updateSL'])) {
                                 <table>
                                     <thead>
                                         <tr class="title-top">
-                                            <th class="product-thumbnail">Ảnh sản phẩm</th>
                                             <th class="product-name">Sản phẩm</th>
                                             <th class="product-price">Giá</th>
                                             <th class="product-quantity">Số lượng</th>
@@ -83,8 +82,7 @@ if (isset($_POST['updateSL'])) {
 									?>
 									<form method = "post" action="">
                                         <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="images/product/sm-3/1.jpg" alt="product img"></a></td>
-											<td class="product-name"><a href="#"><?php echo $dataProsInCart->idSP; ?></a></td>
+											<td class="product-name"><a href="#"><?php echo $dataProsInCart->TenSanPham; ?></a></td>
 											<input type="hidden" name="idSP" value = "<?php echo $dataProsInCart->idSP; ?>">
                                             <td class="product-price"><span class="amount"><?php echo $dataProsInCart->giaSP; ?>đ</span></td>
                                             <td class="product-quantity"><input type="number" value="<?php echo $dataProsInCart->SoLuong; ?>" name="updateSL" onchange = "this.form.submit()"></td>
