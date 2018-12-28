@@ -1,4 +1,4 @@
-<?php require_once 'connection.php' ?>
+<?php require_once 'config.php' ?>
 <?php if (!$currentUser) : ?>
 <center>
     <h1>Bạn Chưa Đăng Nhập!</h1>
