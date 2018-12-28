@@ -40,7 +40,7 @@ require_once 'config.php';
                     <div class="col-md-12 col-sm-12 ol-lg-12">
 
 					<?php if (!isset($_SESSION["current_user"])) { ?>
-					<div style="text-align:center;">Bạn cần đăng nhập trước để xem giỏ hàng</div>
+					<div style="text-align:center;">Bạn cần đăng nhập trước để xem</div>
 					<?php }
 					else {
                     if (isset($_GET['id'])) {
